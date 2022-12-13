@@ -1,0 +1,15 @@
+.loginFormContainer{
+    border: 2px solid darkred;
+    padding: 140px;
+}
+
+#root{
+    min-height: 100vh;
+}
+
+nav .navbar a{
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 1em;
+}
