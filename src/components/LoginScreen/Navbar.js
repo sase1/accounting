@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import {signOut} from "firebase/auth"
 import {auth} from "../../firebase-config";
+
 const PageNavbar = (props) => {
     const logout = async () =>{
         await signOut(auth)

@@ -16,12 +16,21 @@ const LoginForm = () => {
     const [passOrText, setPassOrText] = useState(true)
 
     const logIn = async (e) => {
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+            setMessage("")
+        }
+        setValidated(true);
         e.preventDefault();
         try{
             const user = await signInWithEmailAndPassword(auth, username, password)
             window.location.href = "http://localhost:3000/home";
+            setMessage("Успешна најава")
         } catch (err){
             console.log(err)
+            setMessage("Неправилен емајл или лозинка")
         }
     }
 

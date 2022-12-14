@@ -20,6 +20,7 @@ const App = () => {
     const [user, setUser] = useState({})
     const [users, setUsers] = useState([])
     const usersCollectionRef = collection(db, "users")
+
     useEffect(() => {
         const app = document.getElementById("root");
         app.style.background = localStorage.getItem('bg');

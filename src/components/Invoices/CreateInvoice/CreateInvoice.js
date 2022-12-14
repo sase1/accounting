@@ -73,7 +73,6 @@ const CreateInvoice = (props) => {
                            inputList={inputList}
                            usersCollectionRef={props.usersCollectionRef}
                            inputListBuyerFields={inputListBuyerFields}
-
                        />
 
                        {/*</Form>*/}

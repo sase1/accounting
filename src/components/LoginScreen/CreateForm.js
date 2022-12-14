@@ -29,28 +29,6 @@ const CreateForm = () => {
             console.log(err)
         }
     }
-    //
-    // const handleSubmit = (event) => {
-    //     const form = event.currentTarget;
-    //     if (form.checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //         setMessage("")
-    //     }
-    //     if (username === "sase" && password === "22"){
-    //         event.preventDefault();
-    //         setMessage("Успешно внесени податоци!")
-    //         setTimeout(() => {
-    //             window.location.href = "http://localhost:3000/home";
-    //         }, 2000);
-    //         localStorage.setItem('admin', 1);
-    //     }
-    //     else{
-    //         event.preventDefault();
-    //         setMessage("внеси правилно име или лозинка!")
-    //     }
-    //     setValidated(true);
-    // };
 
     const toggleShow = () =>{
         setPassOrText(!passOrText)
