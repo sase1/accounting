@@ -28,10 +28,11 @@ const PageNavbar = (props) => {
                                 <Link to={'/login'}>Логирај се</Link>
                             </> :
                             <>
-                                <Button variant="outline-light mx-5" onClick={logout}>Одлогирај се</Button>
-                                <Navbar.Text className={"text-white"}>
-                                    Логиран корисник : <span className={"text-danger"}>{props.user.email}</span>
+                                <Navbar.Text className={"text-white float-start"}>
+                                    Kорисник : <span className={"text-danger"}>{props.user.email}</span>
                                 </Navbar.Text>
+                                <Link to={'/home'}>Почетна</Link>
+                                <Button variant="outline-light mx-5" onClick={logout}>Одлогирај се</Button>
                             </>
                         }
                     </Nav>

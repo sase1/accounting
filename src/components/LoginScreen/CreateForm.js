@@ -26,6 +26,7 @@ const CreateForm = () => {
             const user = await createUserWithEmailAndPassword(auth, username, password)
             setMessage("Успешно креиран корисник")
         } catch (err){
+            setMessage("Пополни емајл и лозинка полињата")
             console.log(err)
         }
     }
@@ -41,7 +42,7 @@ const CreateForm = () => {
                    <Form noValidate validated={validated} onSubmit={logIn}>
                        <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
                            <h3 className={'text-center mt-1'}>{message}</h3>
-                           <Form.Label>Име</Form.Label>
+                           <Form.Label>Имејл</Form.Label>
                            <Form.Control type="email" required value={username} onChange={(e) => setUsername(e.target.value)} />
                            <Form.Control.Feedback type="invalid">
                                Внеси име

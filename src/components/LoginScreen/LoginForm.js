@@ -46,7 +46,7 @@ const LoginForm = () => {
                         <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
                             <h3 className={'text-center mt-1'}>{message}</h3>
 
-                            <Form.Label>Име</Form.Label>
+                            <Form.Label>Имејл</Form.Label>
                             <Form.Control type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
                                 Внеси име
