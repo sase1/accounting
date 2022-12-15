@@ -1,9 +1,9 @@
 import Table from 'react-bootstrap/Table';
 import {Link} from "react-router-dom";
-import {deleteDoc, doc, getDocs} from "firebase/firestore";
+import {deleteDoc, doc} from "firebase/firestore";
 import {db} from "../../../firebase-config";
 import {useEffect, useState} from "react";
-import {Col, FormControl, FormGroup, FormLabel, Row} from "react-bootstrap";
+import {Col, FormControl, FormGroup, Row} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
 const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
@@ -39,6 +39,7 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
                         <FormControl type="text" value={searchInvoice} onChange={(e) => setSearchInvoice(e.target.value)} placeholder="Пребарување според број на фактура" />
                     </FormGroup>
                 </Col>
+
                 <Col md={2}>
                     <Button className={"btn btn-danger"} onClick={resetFilters}>Избриши филтри</Button>
                 </Col>

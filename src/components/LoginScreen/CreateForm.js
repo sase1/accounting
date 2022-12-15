@@ -50,7 +50,7 @@ const CreateForm = () => {
                        </Form.Group>
 
                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                           <Form.Label>Лозинка <FaEye onClick={toggleShow} style={{cursor: "pointer"}}></FaEye></Form.Label>
+                           <Form.Label>Лозинка (најмалку 6 карактери) <FaEye onClick={toggleShow} style={{cursor: "pointer"}}></FaEye></Form.Label>
                            <Form.Control type={passOrText ? "password" : "text"} name={"password"} required value={password} onChange={(e) => setPassword(e.target.value)} />
                            <Form.Control.Feedback type="invalid">
                                Внеси лозинка

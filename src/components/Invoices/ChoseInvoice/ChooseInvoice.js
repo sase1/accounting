@@ -2,23 +2,37 @@ import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
 import {Breadcrumb, Col, Row} from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import InvoiceTable from "./InvociesTable";
 
 const ChooseInvoice = ({users, setUsers}) => {
     const [monthValue, setMonthValue] = useState('')
     const [yearValue, setYearValue] = useState('')
-    const [showTableData, setShowTableData] = useState(false)
+    const [showTableData, setShowTableData] = useState(true)
+
+    useEffect(() => {
+        if (!localStorage.getItem('month') && !localStorage.getItem('year')){
+            setShowTableData(false)
+        }
+        else {
+            setMonthValue(localStorage.getItem('month'))
+            setYearValue(localStorage.getItem('year'))
+        }
+    }, []);
+
     const showTable = (e) => {
         e.preventDefault();
         if (monthValue != 0 && yearValue != 0){
             setShowTableData(true)
         }
+        localStorage.setItem('month', monthValue);
+        localStorage.setItem('year', yearValue);
     }
 
     const showTableFilter = () => {
         setShowTableData(false)
+        localStorage.clear();
     }
 
     return (
@@ -29,14 +43,14 @@ const ChooseInvoice = ({users, setUsers}) => {
                         <Breadcrumb>
                             <Link to={'/home'}>Почетна</Link>
                         </Breadcrumb> &nbsp; / &nbsp;
-                        <Breadcrumb.Item active href="/choose-invoice">Избери Фактура</Breadcrumb.Item>
+                        <Breadcrumb.Item active href="/choose-invoice">Издадени Фактури</Breadcrumb.Item>
                     </Breadcrumb>
                 </Col>
             </Row>
 
             {showTableData ?  <Row>
                 <Col md={8} className={'m-auto'}>
-                    <h2 className={'float-start'}>Одбравте приказ за: {monthValue} месец / {yearValue} година </h2>
+                    <h2 className={'float-start'}>Одбран приказ: {monthValue} месец / {yearValue} година </h2>
                     <button onClick={showTableFilter} className={'btn btn-primary float-end'}>Одбери нова дата</button>
                 </Col>
             </Row> : null}

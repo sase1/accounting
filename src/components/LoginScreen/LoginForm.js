@@ -6,6 +6,7 @@ import {Col, Row} from "react-bootstrap";
 import { FaEye } from 'react-icons/fa';
 import {signInWithEmailAndPassword} from 'firebase/auth'
 import {auth} from "../../firebase-config";
+import {useNavigate} from "react-router";
 
 
 const LoginForm = () => {
@@ -14,6 +15,8 @@ const LoginForm = () => {
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
     const [passOrText, setPassOrText] = useState(true)
+    const navigateToHome = useNavigate()
+
 
     const logIn = async (e) => {
         const form = e.currentTarget;
@@ -26,8 +29,8 @@ const LoginForm = () => {
         e.preventDefault();
         try{
             const user = await signInWithEmailAndPassword(auth, username, password)
-            window.location.href = "http://localhost:3000/home";
             setMessage("Успешна најава")
+            setTimeout(() => {navigateToHome('/home')}, 2000);
         } catch (err){
             console.log(err)
             setMessage("Неправилен емајл или лозинка")
