@@ -9,6 +9,7 @@ import {auth} from "../../firebase-config";
 const PageNavbar = (props) => {
     const logout = async () =>{
         await signOut(auth)
+        localStorage.clear();
     }
     return (
             <Navbar bg="dark" variant="dark">

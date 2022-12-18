@@ -48,14 +48,13 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
                 <thead>
                 <tr>
                     <th>Име на клиент</th>
-                    <th>Датум на издавање</th>
+                    <th>Датум на фактура</th>
                     <th>Број на фактура</th>
-                    <th>ID</th>
                     <th>Бришење</th>
                 </tr>
                 </thead>
                 <tbody>
-                {users.filter((user) => user.buyer.toLowerCase().includes(searchClient) && user.id.toLowerCase().includes(searchInvoice)).map((user, idx) => {
+                {users.filter((user) => user.buyer.toLowerCase().includes(searchClient) && user.invoiceNumber.toLowerCase().includes(searchInvoice)).map((user, idx) => {
                     return (
                         <tr key={idx}>
                         {
@@ -68,7 +67,6 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
                                 </td>
                                 <td>{user.invoiceDate}</td>
                                 <td>{user.invoiceNumber}</td>
-                                <td>{user.id}</td>
                                 <td>
                                     <button className={"btn btn-sm btn-danger"} onClick={() => deleteInvoice(user.id)}>
                                         Бриши

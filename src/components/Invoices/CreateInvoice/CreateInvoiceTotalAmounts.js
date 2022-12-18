@@ -1,6 +1,6 @@
 import {Col, ListGroup, Row} from "react-bootstrap";
 import {addDoc} from "firebase/firestore";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 const InvoicesTotalFields = (props) =>{
     const [msg, setMsg] = useState(false)
     const totalSumWithoutVatArray = props.inputList.map(item => Number(item.quantity * item.priceWithoutVat));
@@ -8,6 +8,9 @@ const InvoicesTotalFields = (props) =>{
 
     const totalSumArrayWithVat = props.inputList.map(item => Number(item.quantity * item.priceWithVat));
     const finalSumWithVat = totalSumArrayWithVat.reduce((a, b) => a + b).toFixed(1);
+
+    const [disabledButton, setDisabledButton] = useState(true)
+    let allValuesFromInputBuyerFields = Object.values(props.inputListBuyerFields[0])
 
     const createNewInvoice = async () => {
         await  addDoc(props.usersCollectionRef,
@@ -29,9 +32,16 @@ const InvoicesTotalFields = (props) =>{
             setMsg(false)
             window.location.reload(true);
         }, 2000);
-
-
     }
+
+    useEffect(() => {
+        if (allValuesFromInputBuyerFields[0] == "" || allValuesFromInputBuyerFields[2] == "" || allValuesFromInputBuyerFields[3] == ""){
+            setDisabledButton(true)
+        }
+        else {
+            setDisabledButton(false)
+        }
+    }, [allValuesFromInputBuyerFields]);
 
     return (
         <Row className={'mt-1'}>
@@ -48,9 +58,13 @@ const InvoicesTotalFields = (props) =>{
             </Col>
 
             <Col md={{ span: 3, offset: 9}}>
-                <button className={"btn mt-3 btn-info text-white float-end"}
-                        onClick={createNewInvoice}
-                >Зачувај фактура</button>
+                <button
+                    className={"btn mt-3 btn-info text-white float-end"}
+                    onClick={createNewInvoice}
+                    disabled={disabledButton}
+                    >
+                        Зачувај фактура
+                </button>
             </Col>
         </Row>
     );

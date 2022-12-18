@@ -35,6 +35,10 @@ const ChooseInvoice = ({users, setUsers}) => {
         localStorage.clear();
     }
 
+    const removeMultipleMonthsFromSelect = Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(5, 7)]:cur}),{}))
+    const removeMultipleYearsFromSelect = Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(0, 4)]:cur}),{}))
+
+    // console.log(Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(0, 4)]:cur}),{})))
     return (
         <Container fluid>
             <Row>
@@ -62,29 +66,25 @@ const ChooseInvoice = ({users, setUsers}) => {
                             <Col md={4}>
                                 <Form.Select aria-label="Default select example" value={monthValue} onChange={ e => setMonthValue(e.target.value)}>
                                     <option value="0">Избери Месец</option>
-                                    <option value="01">Јануари</option>
-                                    <option value="02">Фебруари</option>
-                                    <option value="03">Март</option>
-                                    <option value="04">Април</option>
-                                    <option value="05">Мај</option>
-                                    <option value="06">Јуни</option>
-                                    <option value="07">Јули</option>
-                                    <option value="08">Август</option>
-                                    <option value="09">Септември</option>
-                                    <option value="10">Октомври</option>
-                                    <option value="11">Ноември</option>
-                                    <option value="12">Декември</option>
+                                    {/*<option value="01">Јануари</option>*/}
+                                    {removeMultipleMonthsFromSelect.map((user, idx) => {
+                                        return (
+                                            <option key={idx} value={user.invoiceDate.substring(5, 7)}>{user.invoiceDate.substring(5, 7)}</option>
+                                        );
+                                    })}
                                 </Form.Select>
                             </Col>
 
                             <Col md={4}>
                                 <Form.Select aria-label="Default select example" value={yearValue} onChange={ e => setYearValue(e.target.value)}>
                                     <option value="0">Избери Година</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
+                                    {/*<option value="2018">2018</option>*/}
+                                    {removeMultipleYearsFromSelect.map((user, idx) => {
+                                        return (
+                                            <option key={idx} value={user.invoiceDate.substring(0, 4)}>{user.invoiceDate.substring(0, 4)}</option>
+                                        );
+                                    })}
+
                                 </Form.Select>
                             </Col>
 
