@@ -12,7 +12,7 @@ const PageNavbar = (props) => {
         localStorage.clear();
     }
     return (
-            <Navbar bg="dark" variant="dark">
+            <Navbar>
                 <Container>
                     <Navbar.Brand href="">
                         <img
@@ -21,6 +21,11 @@ const PageNavbar = (props) => {
                             height="40"
                             className="d-inline-block align-top"
                         />
+                        {props.user &&
+                        <Navbar.Text className={"text-white"}>
+                            Kорисник : <span>{props.user.email}</span>
+                        </Navbar.Text>
+                        }
                     </Navbar.Brand>
                     <Nav className="navbar">
                         {!props.user ?
@@ -29,10 +34,7 @@ const PageNavbar = (props) => {
                                 <Link to={'/login'}>Логирај се</Link>
                             </> :
                             <>
-                                <Navbar.Text className={"text-white float-start"}>
-                                    Kорисник : <span className={"text-danger"}>{props.user.email}</span>
-                                </Navbar.Text>
-                                <Link to={'/home'}>Почетна</Link>
+                                <Link to={'/home'}>Почетна</Link> &nbsp;
                                 <Button variant="outline-light mx-5" onClick={logout}>Одлогирај се</Button>
                             </>
                         }

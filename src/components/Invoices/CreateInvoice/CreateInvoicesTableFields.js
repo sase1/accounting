@@ -1,4 +1,4 @@
-import {Col, FloatingLabel, Form, Row} from "react-bootstrap";
+import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
 
 const InvoicesTableFields = (props) => {
     return (
@@ -101,10 +101,10 @@ const InvoicesTableFields = (props) => {
                         </Col>
 
                         <div>
-                            {props.inputList.length !== 1 && <button
-                                className="btn btn-danger mt-3"
-                                onClick={() => props.handleRemoveClick(i)}>Одстрани</button>} &nbsp;
-                            {props.inputList.length - 1 === i && <button className={'btn btn-success mt-3'} onClick={props.handleAddClick}>Додај нов ред</button>}
+                            {props.inputList.length !== 1 && <Button
+                                className="delete-row border-0 mt-3"
+                                onClick={() => props.handleRemoveClick(i)}>Одстрани</Button>} &nbsp;
+                            {props.inputList.length - 1 === i && <Button className={'new-row border-0 mt-3'} onClick={props.handleAddClick}>Додај нов ред</Button>}
                         </div>
                     </Row>
                 );

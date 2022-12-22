@@ -55,7 +55,7 @@ const ChooseInvoice = ({users, setUsers}) => {
             {showTableData ?  <Row>
                 <Col md={8} className={'m-auto'}>
                     <h2 className={'float-start'}>Одбран приказ: {monthValue} месец / {yearValue} година </h2>
-                    <button onClick={showTableFilter} className={'btn btn-primary float-end'}>Одбери нова дата</button>
+                    <Button onClick={showTableFilter} className={"show-invoice float-end border-0"}>Одбери нова дата</Button>
                 </Col>
             </Row> : null}
 
@@ -89,7 +89,7 @@ const ChooseInvoice = ({users, setUsers}) => {
                             </Col>
 
                             <Col md={2}>
-                                <Button variant="primary" type="submit" onClick={showTable}>
+                                <Button className={"show-invoice border-0"} onClick={showTable}>
                                     Прикажи
                                 </Button>
                             </Col>

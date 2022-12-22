@@ -43,8 +43,8 @@ const LoginForm = () => {
     return (
         <Container>
             <Row className={"justify-content-md-center align-items-center vh-100"}>
-                <Col md={6} className={"loginFormContainer"}>
-                    <h1 className={"text-center"}>Интернет Сметководство</h1>
+                <Col md={4} className={"loginFormContainer bg-white p-5"}>
+                    <h1 className={"text-center"}>Интернет Систем</h1>
                     <Form noValidate validated={validated} onSubmit={logIn}>
                         <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
                             <h3 className={'text-center mt-1'}>{message}</h3>
@@ -63,11 +63,16 @@ const LoginForm = () => {
                                 Внеси лозинка
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button className={"create-user"} type="submit">
                             Логирај се
                         </Button>
                     </Form>
+                    <div className={"mt-5"}>
+                        <p>Имејл: sase@live.com</p>
+                        <p>Лозинка: 112233</p>
+                    </div>
                 </Col>
+
             </Row>
         </Container>
     );

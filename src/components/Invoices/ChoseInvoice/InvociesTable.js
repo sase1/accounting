@@ -5,6 +5,7 @@ import {db} from "../../../firebase-config";
 import {useEffect, useState} from "react";
 import {Col, FormControl, FormGroup, Row} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import {FaPrint, FaTrash} from "react-icons/fa";
 
 const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
 
@@ -25,6 +26,12 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
         setSearchInvoice("");
     }
 
+    const  print = () =>{
+        setTimeout(() => {
+            window.print();
+        }, 1500);
+    }
+
     return (
         <>
             <Row>
@@ -41,16 +48,17 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
                 </Col>
 
                 <Col md={2}>
-                    <Button className={"btn btn-danger"} onClick={resetFilters}>Избриши филтри</Button>
+                    <Button className={"delete-filter border-0"} onClick={resetFilters}>Избриши филтри</Button>
                 </Col>
             </Row>
-            <Table className={'text-center'} bordered>
+            <Table className={'text-center table-hover table-responsive table-bordered'}>
                 <thead>
                 <tr>
                     <th>Име на клиент</th>
                     <th>Датум на фактура</th>
                     <th>Број на фактура</th>
-                    <th>Бришење</th>
+                    <th>Принтај</th>
+                    <th>Избриши</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -68,9 +76,12 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
                                 <td>{user.invoiceDate}</td>
                                 <td>{user.invoiceNumber}</td>
                                 <td>
-                                    <button className={"btn btn-sm btn-danger"} onClick={() => deleteInvoice(user.id)}>
-                                        Бриши
-                                    </button>
+                                    <Link to={`/users/${user.id}`} style={{color: "black", textDecoration: "none"}}>
+                                        <FaPrint onClick={print}/>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <FaTrash className={"delete-icon"} onClick={() => deleteInvoice(user.id)}/>
                                 </td>
                             </> : null
                         }

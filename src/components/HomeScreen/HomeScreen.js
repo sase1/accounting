@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container";
 import {Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import Form from "react-bootstrap/Form";
-const Homescreen = () => {
+import {FaFile, FaFileArchive, FaFileContract} from "react-icons/fa";
+const Homescreen = ({users}) => {
     const lightBulbSwitch = () => {
         const app = document.getElementById("root");
         const bgColorVal = document.getElementById("bg-colorValue").value;
@@ -33,20 +34,22 @@ const Homescreen = () => {
         <Container>
             <Row className={"mt-5 text-center"}>
                 <Col md={3}>
-                    <Card>
-                        <Card.Header>Креирај Фактура</Card.Header>
-                        <Card.Body>
-                            <Link className={"btn btn-primary"} to={"/create-invoice"}>Отвори</Link>
-                        </Card.Body>
+                    <Card className="create-invoice">
+                        <Link className={"text-white text-decoration-none pt-5"} to={"/create-invoice"}>Креирај Фактура
+                            <Card.Body className={"p-4"}>
+                                <FaFile/>
+                            </Card.Body>
+                        </Link>
                     </Card>
                 </Col>
 
                 <Col md={3}>
-                    <Card>
-                        <Card.Header>Издадени Фактури</Card.Header>
-                        <Card.Body>
-                            <Link className={'btn btn-primary'} to={"/choose-invoice"}>Отвори</Link>
-                        </Card.Body>
+                    <Card className="created-invoice">
+                        <Link className={"text-white text-decoration-none pt-5"} to={"/choose-invoice"}>Издадени Фактури
+                            <Card.Body className={"p-4"}>
+                                Издадени: {users.length} <FaFileContract/>
+                            </Card.Body>
+                        </Link>
                     </Card>
                 </Col>
                 <Col md={3}>

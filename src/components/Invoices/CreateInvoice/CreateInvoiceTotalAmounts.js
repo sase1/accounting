@@ -1,6 +1,7 @@
 import {Col, ListGroup, Row} from "react-bootstrap";
 import {addDoc} from "firebase/firestore";
 import {useEffect, useState} from "react";
+import Button from "react-bootstrap/Button";
 const InvoicesTotalFields = (props) =>{
     const [msg, setMsg] = useState(false)
     const totalSumWithoutVatArray = props.inputList.map(item => Number(item.quantity * item.priceWithoutVat));
@@ -58,13 +59,13 @@ const InvoicesTotalFields = (props) =>{
             </Col>
 
             <Col md={{ span: 3, offset: 9}}>
-                <button
-                    className={"btn mt-3 btn-info text-white float-end"}
+                <Button
+                    className={"mt-3 text-white float-end"}
                     onClick={createNewInvoice}
                     disabled={disabledButton}
                     >
                         Зачувај фактура
-                </button>
+                </Button>
             </Col>
         </Row>
     );

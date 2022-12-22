@@ -1,10 +1,13 @@
-.loginFormContainer{
-    border: 2px solid darkred;
-    padding: 140px;
-}
 
 #root{
     min-height: 100vh;
+    background-color: ghostwhite;
+}
+
+
+nav.navbar,
+button.show-invoice{
+    background: #334257!important;
 }
 
 nav .navbar a{
@@ -12,4 +15,49 @@ nav .navbar a{
     text-decoration: none;
     margin-left: 25px;
     font-size: 1em;
+}
+
+
+span.navbar-text{
+    font-size: 15px!important;
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+
+.create-user{
+    background-color: #1164FF!important;
+}
+
+.create-invoice{
+    background: #402218!important;
+}
+
+.created-invoice{
+    background: #334257!important;
+}
+
+.new-row{
+    background-color: #466A6D!important;
+}
+
+
+.delete-filter{
+    background-color: #EF7822!important;
+}
+
+.delete-row{
+    background-color: darkred!important;
+}
+
+
+.delete-icon{
+    cursor: pointer;
+    color: darkred;
+}
+
+
+.card a{
+    font-size: 1.2em;
 }
