@@ -1,10 +1,9 @@
 import Card from 'react-bootstrap/Card';
 import Container from "react-bootstrap/Container";
-import {Col, Row} from "react-bootstrap";
+import {Col, Form, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import {FaFile, FaFileArchive, FaFileContract} from "react-icons/fa";
-const Homescreen = ({users}) => {
+import {FaFile, FaFileContract, FaRegFilePdf} from "react-icons/fa";
+const Homescreen = ({users, imageList}) => {
     const lightBulbSwitch = () => {
         const app = document.getElementById("root");
         const bgColorVal = document.getElementById("bg-colorValue").value;
@@ -52,30 +51,42 @@ const Homescreen = ({users}) => {
                         </Link>
                     </Card>
                 </Col>
-                <Col md={3}>
-                    <Card>
-                        <Card.Header>Одбери боја на системот</Card.Header>
-                        <Card.Body>
-                            <label>Позадина</label>
-                            <input type="color" id='bg-colorValue' />
 
-                            <label>Боја</label>
-                            <input type="color" id='colorValue' />
-                            <br/>
-                            <button className={'btn btn-primary mt-3'} onClick={lightBulbSwitch}> Одбери боја</button> &nbsp;
-                            <button className={'btn btn-warning text-white mt-3'} onClick={lightBulbSwitchReset}> Ресетирај боја</button>
-                        </Card.Body>
+                <Col md={3}>
+                    <Card className="saved-pdf">
+                        <Link className={"text-white text-decoration-none pt-5"} to={"/saved-pdf-invoices"}>Зачувани ПДФ фајлови
+                            <Card.Body className={"p-4"}>
+                                Зачувани:  <FaRegFilePdf/>
+                            </Card.Body>
+                        </Link>
                     </Card>
                 </Col>
+
+                {/*<Col md={3}>*/}
+                {/*    <Card>*/}
+                {/*        <Card.Header>Одбери боја на системот</Card.Header>*/}
+                {/*        <Card.Body>*/}
+                {/*            <label>Позадина</label>*/}
+                {/*            <input type="color" id='bg-colorValue' />*/}
+
+                {/*            <label>Боја</label>*/}
+                {/*            <input type="color" id='colorValue' />*/}
+                {/*            <br/>*/}
+                {/*            <button className={'btn btn-primary mt-3'} onClick={lightBulbSwitch}> Одбери боја</button> &nbsp;*/}
+                {/*            <button className={'btn btn-danger text-white mt-3'} onClick={lightBulbSwitchReset}> Ресетирај боја</button>*/}
+                {/*        </Card.Body>*/}
+                {/*    </Card>*/}
+                {/*</Col>*/}
                 <Col md={3}>
-                    <Card>
-                        <Card.Header>Одбери фонт на системот</Card.Header>
+                    <Card className="font-card-color text-white">
+                        {/*<Card.Header>Одбери фонт на системот</Card.Header>*/}
                         <Card.Body>
+                            <p className={"m-0"} style={{fontSize: "1.2em"}}>Одбери фонт на системот</p>
                             <Form.Select aria-label="Default select example" id="languageVal" onChange={ e => chooseFontHandler(e.target.value)}>
-                                <option value=""></option>
+                                <option value="">Стандарден</option>
                                 <option value="Alexandria">Alexandria</option>
                             </Form.Select>
-                            <button className={'btn btn-info mt-3 text-white'} onClick={chooseFontHandlerReset}> Ресетирај фонт</button>
+                            <button className={'btn btn-danger mt-3 text-white'} onClick={chooseFontHandlerReset}> Ресетирај фонт</button>
                         </Card.Body>
                     </Card>
                 </Col>

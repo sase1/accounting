@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useParams } from "react-router";
 import {Breadcrumb, Col, FloatingLabel, Form, ListGroup, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
@@ -7,6 +7,14 @@ import CreateInvoiceUpperFields from "../CreateInvoice/CreateInvoicesUpperFields
 import CreateInvoiceSignFields from "../CreateInvoice/CreateInvoiceSignFields";
 
 const SeeInvoice = ({users}) => {
+
+    // useEffect(() => {
+    //     window.onafterprint = back;
+    // }, []);
+    //
+    // const back = () => {
+    //     window.history.back();
+    // }
     const {id} = useParams();
     return (
         <Container fluid>

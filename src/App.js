@@ -9,12 +9,13 @@ import "./App.css";
 import {useEffect, useState} from "react";
 import SeeInvoice from "./components/Invoices/ChoseInvoice/SeeInvoice";
 import {collection, getDocs} from "firebase/firestore";
-import {db} from "./firebase-config";
+import {db, storage} from "./firebase-config";
 import ProtectedRoute from "./ProtectedRoutes";
 import {auth} from "./firebase-config";
 import {onAuthStateChanged} from "firebase/auth"
 import LoginForm from "./components/LoginScreen/LoginForm";
 import WelcomeScreen from "./components/LoginScreen/WelcomeScreen";
+import PdfInvoice from "./components/Invoices/PdfInvoice/PdfInvoice";
 
 const App = () => {
     const [user, setUser] = useState({})
@@ -62,10 +63,17 @@ const App = () => {
 
             <Route path={"/create-invoice"} element={
                 <ProtectedRoute user={user}>
-                    <CreateInvoice usersCollectionRef={usersCollectionRef} />
+                    <CreateInvoice />
                 </ProtectedRoute>
             }
             />
+
+              <Route path={"/saved-pdf-invoices"} element={
+                  <ProtectedRoute user={user}>
+                      <PdfInvoice />
+                  </ProtectedRoute>
+              }
+              />
 
             <Route path={"/users/:id"} element={
                 <ProtectedRoute user={user}>

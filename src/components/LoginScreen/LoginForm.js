@@ -68,8 +68,8 @@ const LoginForm = () => {
                         </Button>
                     </Form>
                     <div className={"mt-5"}>
-                        <p>Имејл: sase@live.com</p>
-                        <p>Лозинка: 112233</p>
+                        <p>Имејл:sase@live.com</p>
+                        <p>Лозинка:112233</p>
                     </div>
                 </Col>
 

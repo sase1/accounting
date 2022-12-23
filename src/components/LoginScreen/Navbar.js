@@ -15,12 +15,15 @@ const PageNavbar = (props) => {
             <Navbar>
                 <Container>
                     <Navbar.Brand href="">
-                        <img
-                            alt=""
-                            src="https://flc.com.mk/wp-content/uploads/2022/08/flc.png"
-                            height="40"
-                            className="d-inline-block align-top"
-                        />
+                        {/*<img*/}
+                        {/*    alt=""*/}
+                        {/*    src="./sase.png"*/}
+                        {/*    height="80"*/}
+                        {/*    className="d-inline-block align-top"*/}
+                        {/*/>*/}
+                        <h2 className={"d-inline text-white"}>
+                            M<span className={"text-danger"}>Систем</span>
+                        </h2>
                         {props.user &&
                         <Navbar.Text className={"text-white"}>
                             Kорисник : <span>{props.user.email}</span>

@@ -1,9 +1,7 @@
-
 #root{
     min-height: 100vh;
     background-color: ghostwhite;
 }
-
 
 nav.navbar,
 button.show-invoice{
@@ -17,14 +15,10 @@ nav .navbar a{
     font-size: 1em;
 }
 
-
 span.navbar-text{
     font-size: 15px!important;
-    position: relative;
-    top: 10px;
-    left: 20px;
+    margin-left: 25px;
 }
-
 
 .create-user{
     background-color: #1164FF!important;
@@ -38,10 +32,18 @@ span.navbar-text{
     background: #334257!important;
 }
 
+
+.saved-pdf{
+    background-color: #57837B!important;
+}
+
 .new-row{
     background-color: #466A6D!important;
 }
 
+.font-card-color{
+    background-color: #54436B!important;
+}
 
 .delete-filter{
     background-color: #EF7822!important;
@@ -51,13 +53,23 @@ span.navbar-text{
     background-color: darkred!important;
 }
 
+.logo-text{
+    font-size: 2em;
+    display: inline-block;
+}
 
 .delete-icon{
     cursor: pointer;
     color: darkred;
 }
 
-
 .card a{
     font-size: 1.2em;
+}
+
+@media print {
+    nav.navbar,
+    ol.breadcrumb{
+        display: none;
+    }
 }
