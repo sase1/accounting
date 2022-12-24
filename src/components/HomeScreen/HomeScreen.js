@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import {Col, Form, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FaFile, FaFileContract, FaRegFilePdf} from "react-icons/fa";
-const Homescreen = ({users, imageList}) => {
+const Homescreen = ({users}) => {
     const lightBulbSwitch = () => {
         const app = document.getElementById("root");
         const bgColorVal = document.getElementById("bg-colorValue").value;
@@ -30,9 +30,10 @@ const Homescreen = ({users, imageList}) => {
     }
 
     return (
+        <div className="snow">
         <Container>
-            <Row className={"mt-5 text-center"}>
-                <Col md={3}>
+            <Row className={"text-center"}>
+                <Col md={3} className="mt-4">
                     <Card className="create-invoice">
                         <Link className={"text-white text-decoration-none pt-5"} to={"/create-invoice"}>Креирај Фактура
                             <Card.Body className={"p-4"}>
@@ -42,7 +43,7 @@ const Homescreen = ({users, imageList}) => {
                     </Card>
                 </Col>
 
-                <Col md={3}>
+                <Col md={3} className="mt-4">
                     <Card className="created-invoice">
                         <Link className={"text-white text-decoration-none pt-5"} to={"/choose-invoice"}>Издадени Фактури
                             <Card.Body className={"p-4"}>
@@ -52,7 +53,7 @@ const Homescreen = ({users, imageList}) => {
                     </Card>
                 </Col>
 
-                <Col md={3}>
+                <Col md={3} className="mt-4">
                     <Card className="saved-pdf">
                         <Link className={"text-white text-decoration-none pt-5"} to={"/saved-pdf-invoices"}>Зачувани ПДФ фајлови
                             <Card.Body className={"p-4"}>
@@ -77,7 +78,7 @@ const Homescreen = ({users, imageList}) => {
                 {/*        </Card.Body>*/}
                 {/*    </Card>*/}
                 {/*</Col>*/}
-                <Col md={3}>
+                <Col md={3} className="mt-4">
                     <Card className="font-card-color text-white">
                         {/*<Card.Header>Одбери фонт на системот</Card.Header>*/}
                         <Card.Body>
@@ -92,6 +93,8 @@ const Homescreen = ({users, imageList}) => {
                 </Col>
             </Row>
         </Container>
+        </div>
+
     );
 }
 

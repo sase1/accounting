@@ -3,6 +3,21 @@
     background-color: ghostwhite;
 }
 
+.snow,
+.home{
+    background-image: url("../public/christmas.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.home{
+    background-image: url("../public/tree.webp");
+    background-position: top;
+}
+
+
 nav.navbar,
 button.show-invoice{
     background: #334257!important;
@@ -18,6 +33,8 @@ nav .navbar a{
 span.navbar-text{
     font-size: 15px!important;
     margin-left: 25px;
+    position: relative;
+    top: -5px;
 }
 
 .create-user{
@@ -31,7 +48,6 @@ span.navbar-text{
 .created-invoice{
     background: #334257!important;
 }
-
 
 .saved-pdf{
     background-color: #57837B!important;
@@ -47,6 +63,14 @@ span.navbar-text{
 
 .delete-filter{
     background-color: #EF7822!important;
+}
+
+.modal-no{
+    background: #313131!important;
+}
+
+.modal-yes{
+    background: #E3604F!important;
 }
 
 .delete-row{

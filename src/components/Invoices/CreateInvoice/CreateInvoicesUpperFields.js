@@ -13,7 +13,7 @@ const CreateInvoiceUpperFields = () => {
                                 label="Име на Фирма"
                                 className="mb-2"
                             >
-                                <Form.Control type="text" placeholder="а" defaultValue={"Кодинг Фактори"} readOnly/>
+                                <Form.Control type="text" placeholder="а" defaultValue={"Lorem Ipsum"} readOnly/>
                             </FloatingLabel>
                         </Col>
                         <Col md={3}>
@@ -22,7 +22,7 @@ const CreateInvoiceUpperFields = () => {
                                 label="Адреса на Фирма"
                                 className="mb-2"
                             >
-                                <Form.Control type="text" placeholder="а" defaultValue={"Гевгелија"} readOnly/>
+                                <Form.Control type="text" placeholder="а" defaultValue={"Lorem Ipsum"} readOnly/>
                             </FloatingLabel>
                         </Col>
 
@@ -41,7 +41,7 @@ const CreateInvoiceUpperFields = () => {
                                 label="Емаил на Фирма"
                                 className="mb-2"
                             >
-                                <Form.Control type="text" placeholder="а" defaultValue={"coding@factory.mk"} readOnly/>
+                                <Form.Control type="text" placeholder="а" defaultValue={"lorem@ipsum.mk"} readOnly/>
                             </FloatingLabel>
                         </Col>
                     </Row>

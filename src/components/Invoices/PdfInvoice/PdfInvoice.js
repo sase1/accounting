@@ -53,8 +53,8 @@ const PdfInvoice = () => {
                     {imageList.map((url, idx) => {
                         return(
                             <Col key={idx} md={4}>
-                                <object data={url} type="application/pdf" width="100%" height="400"></object>
-                                <a href={url} target="_blank">Линк до PDF фајлот!</a>
+                                <object data={url} type="application/pdf" width="100%" height="400" aria-label="pdf file" ></object>
+                                <a rel="noreferrer" href={url} target="_blank">Линк до PDF фајлот!</a>
                             </Col>
                         )
                     })}

@@ -9,7 +9,7 @@ import "./App.css";
 import {useEffect, useState} from "react";
 import SeeInvoice from "./components/Invoices/ChoseInvoice/SeeInvoice";
 import {collection, getDocs} from "firebase/firestore";
-import {db, storage} from "./firebase-config";
+import {db} from "./firebase-config";
 import ProtectedRoute from "./ProtectedRoutes";
 import {auth} from "./firebase-config";
 import {onAuthStateChanged} from "firebase/auth"
@@ -84,7 +84,6 @@ const App = () => {
             <Route path={"*"} element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
-
   );
 }
 
