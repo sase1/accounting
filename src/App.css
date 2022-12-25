@@ -88,11 +88,27 @@ span.navbar-text{
 }
 
 .card a{
-    font-size: 1.2em;
+    font-size: 1.4em;
+}
+
+.cards .card{
+    min-height: 25vh;
+}
+
+.choose-color{
+    background-color: #4B7891!important;
+}
+
+.last-file-added{
+    background-color: #18202b!important;
+}
+
+
+.cards .card:hover{
+    background-color: rgba(0,0,0, .4)!important;
 }
 
 @media print {
-    nav.navbar,
     ol.breadcrumb{
         display: none;
     }

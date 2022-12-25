@@ -63,7 +63,7 @@ const App = () => {
 
             <Route path={"/create-invoice"} element={
                 <ProtectedRoute user={user}>
-                    <CreateInvoice />
+                    <CreateInvoice usersCollectionRef={usersCollectionRef}/>
                 </ProtectedRoute>
             }
             />

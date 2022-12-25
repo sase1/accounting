@@ -204,7 +204,7 @@ const SeeInvoice = ({users}) => {
                                 <ListGroup>
                                     <ListGroup.Item disabled>Вкупна цена без ДДВ <span className={'float-end'}>{user.finalSumWithoutVat}</span> </ListGroup.Item>
                                     <ListGroup.Item disabled>Вкупна цена со ДДВ <span className={'float-end'}>{user.finalSumWithVat}</span> </ListGroup.Item>
-                                    <ListGroup.Item disabled>Разлика од заокружување <span className={'float-end'}></span> </ListGroup.Item>
+                                    {/*<ListGroup.Item disabled>Разлика од заокружување <span className={'float-end'}></span> </ListGroup.Item>*/}
                                     <ListGroup.Item disabled>Вкупно за наплата во денари <span className={'float-end'}>{user.finalSumWithVat}</span> </ListGroup.Item>
                                 </ListGroup>
                             </Col>

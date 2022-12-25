@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 const InvoicesTotalFields = (props) =>{
     const [msg, setMsg] = useState(false)
+    const [showFillFieldsMessage, setShowFillFieldsMessage] = useState(true)
     const totalSumWithoutVatArray = props.inputList.map(item => Number(item.quantity * item.priceWithoutVat));
     const finalSumWithoutVat = totalSumWithoutVatArray.reduce((a, b) => a + b);
 
@@ -12,6 +13,8 @@ const InvoicesTotalFields = (props) =>{
 
     const [disabledButton, setDisabledButton] = useState(true)
     let allValuesFromInputBuyerFields = Object.values(props.inputListBuyerFields[0])
+
+    let [date,setDate] = useState(new Date());
 
     const createNewInvoice = async () => {
         await  addDoc(props.usersCollectionRef,
@@ -29,6 +32,7 @@ const InvoicesTotalFields = (props) =>{
                 //     total sum fields
             })
         setMsg(true)
+        localStorage.setItem('wdic', date.toLocaleString('en-GB'));
         setTimeout(() => {
             setMsg(false)
             window.location.reload(true);
@@ -38,9 +42,12 @@ const InvoicesTotalFields = (props) =>{
     useEffect(() => {
         if (allValuesFromInputBuyerFields[0] == "" || allValuesFromInputBuyerFields[2] == "" || allValuesFromInputBuyerFields[3] == ""){
             setDisabledButton(true)
+            setShowFillFieldsMessage(true)
+
         }
         else {
             setDisabledButton(false)
+            setShowFillFieldsMessage(false)
         }
     }, [allValuesFromInputBuyerFields]);
 
@@ -53,14 +60,19 @@ const InvoicesTotalFields = (props) =>{
                 <ListGroup>
                     <ListGroup.Item>Вкупна цена без ДДВ <span className={'float-end'}>{finalSumWithoutVat}</span> </ListGroup.Item>
                     <ListGroup.Item>Вкупна цена со ДДВ <span className={'float-end'}>{finalSumWithVat}</span> </ListGroup.Item>
-                    <ListGroup.Item>Разлика од заокружување <span className={'float-end'}></span> </ListGroup.Item>
+                    {/*<ListGroup.Item>Разлика од заокружување <span className={'float-end'}></span> </ListGroup.Item>*/}
                     <ListGroup.Item>Вкупно за наплата во денари <span className={'float-end'}>{finalSumWithVat}</span> </ListGroup.Item>
                 </ListGroup>
             </Col>
 
-            <Col md={{ span: 3, offset: 9}}>
+            <Col md={{ span: 4, offset: 8}} className="text-center d-print-none">
+                {showFillFieldsMessage &&
+                    <span
+                        style={{fontSize: "10px"}}
+                        className="mt-4 d-inline-block float-start">Пополни ги полињата: Купувач, Број на ф-ра, и Датум на ф-ра за да зачуваш
+                    </span>}
                 <Button
-                    className={"mt-3 text-white float-end"}
+                    className={"text-white mt-3 float-end"}
                     onClick={createNewInvoice}
                     disabled={disabledButton}
                     >

@@ -23,7 +23,7 @@ const PageNavbar = (props) => {
         setUserName(props.user.email.split('@')[0])
     }
     const [show, setShow] = useState(false);
-    var [date,setDate] = useState(new Date());
+    let [date,setDate] = useState(new Date());
 
     useEffect(() => {
         let timer = setInterval(() => setDate(new Date()), 1000 )
@@ -33,7 +33,7 @@ const PageNavbar = (props) => {
     });
 
     return (
-            <Navbar>
+            <Navbar className="d-print-none ">
                 <Container>
                     <Navbar.Brand href="">
                         <h2 className={"d-inline text-white"}>
@@ -54,7 +54,12 @@ const PageNavbar = (props) => {
                             <>
                                 <Link to={'/home'}>Почетна</Link> &nbsp;
                                 <Button variant="outline-light mx-5" onClick={handleShow}>Одлогирај се</Button>
-                                <p className="text-white mt-3 d-flex align-items-center"> <FaClock/> &nbsp; {date.toLocaleTimeString()} - {date.toLocaleDateString()} &nbsp; <FaCalendarDay/></p>
+                                {/*<p className="text-white mt-3 d-flex align-items-center"> */}
+                                {/*    <FaClock/> &nbsp; {date.toLocaleTimeString()} - {date.toLocaleDateString()} &nbsp; <FaCalendarDay/>*/}
+                                {/*</p>*/}
+                                <p className="text-white mt-3 d-flex align-items-center">
+                                    <FaCalendarDay/> &nbsp; {date.toLocaleString('en-GB')} &nbsp; <FaClock/>
+                                </p>
                             </>
                         }
                     </Nav>
