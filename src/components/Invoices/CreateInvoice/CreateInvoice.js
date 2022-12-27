@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 
 const CreateInvoice = (props) => {
     const [inputList, setInputList] = useState([{ product: "", em: "m2", quantity: "", priceWithoutVat: "",  vat: "", priceWithVat: "", totalVat: "" }]);
-    const [inputListBuyerFields, setInputListBuyerFields] = useState([{ buyer: "", buyerLastName: "", invoiceNumber: "", invoiceDate: "", paymentDue: "" }]);
+    const [inputListBuyerFields, setInputListBuyerFields] = useState([{ buyer: "", buyerLastName: "", invoiceNumber: "", invoiceDate: "", paymentDue: "", dateCreated: "" }]);
     // handle input change
     const handleInputChange = (e, index) => {
         const { name, value } = e.target;

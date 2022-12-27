@@ -11,7 +11,8 @@ import {FaCalendarDay, FaClock} from "react-icons/fa";
 const PageNavbar = (props) => {
     const logout = async () =>{
         await signOut(auth)
-        localStorage.clear();
+        localStorage.removeItem('month');
+        localStorage.removeItem('year');
         setShow(false)
         setUserName("")
     }
@@ -54,9 +55,6 @@ const PageNavbar = (props) => {
                             <>
                                 <Link to={'/home'}>Почетна</Link> &nbsp;
                                 <Button variant="outline-light mx-5" onClick={handleShow}>Одлогирај се</Button>
-                                {/*<p className="text-white mt-3 d-flex align-items-center"> */}
-                                {/*    <FaClock/> &nbsp; {date.toLocaleTimeString()} - {date.toLocaleDateString()} &nbsp; <FaCalendarDay/>*/}
-                                {/*</p>*/}
                                 <p className="text-white mt-3 d-flex align-items-center">
                                     <FaCalendarDay/> &nbsp; {date.toLocaleString('en-GB')} &nbsp; <FaClock/>
                                 </p>

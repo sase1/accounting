@@ -5,10 +5,9 @@ import {db} from "../../../firebase-config";
 import {useEffect, useState} from "react";
 import {Col, FormControl, FormGroup, Row} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import {FaPrint, FaTrash} from "react-icons/fa";
+import {FaEye, FaPrint, FaShoePrints, FaTrash} from "react-icons/fa";
 
 const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
-
     useEffect(() => {
     }, [users]);
     const deleteInvoice = async (id) => {
@@ -26,22 +25,26 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
         setSearchInvoice("");
     }
 
-    const  print = () =>{
+    const print = () =>{
         setTimeout(() => {
             window.print();
         }, 1500);
     }
 
+    const printTable = () =>{
+        window.print();
+    }
+
     return (
         <>
-            <Row>
-                <Col md={5}>
+            <Row className={"d-print-none"}>
+                <Col md={4}>
                     <FormGroup className="mb-4">
                         <FormControl type="text" value={searchClient} onChange={(e) => setSearchClient(e.target.value)} placeholder="Пребарување според клиент"/>
                     </FormGroup>
                 </Col>
 
-                <Col md={5}>
+                <Col md={4}>
                     <FormGroup className="mb-4">
                         <FormControl type="text" value={searchInvoice} onChange={(e) => setSearchInvoice(e.target.value)} placeholder="Пребарување според број на фактура" />
                     </FormGroup>
@@ -50,13 +53,20 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
                 <Col md={2}>
                     <Button className={"delete-filter border-0"} onClick={resetFilters}>Избриши филтри</Button>
                 </Col>
+
+                <Col md={2}>
+                    <Button className={"border-0 float-end"} onClick={printTable}>Принтај табела <FaShoePrints/></Button>
+                </Col>
             </Row>
-            <Table className={'text-center table-hover table-responsive table-bordered'}>
+            <Table className={'text-center table-hover table-responsive bg-white shadow rounded see-invoice'}>
                 <thead>
                 <tr>
+                    <th>#</th>
+                    <th>Отвори</th>
                     <th>Име на клиент</th>
                     <th>Датум на фактура</th>
                     <th>Број на фактура</th>
+                    <th>Датум на креирање</th>
                     <th>Принтај</th>
                     <th>Избриши</th>
                 </tr>
@@ -68,13 +78,12 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
                         {
                             user.invoiceDate.substring(0, 4) == yearValue.substring(0, 4) && user.invoiceDate.substring(5, 7) == monthValue.substring(0, 2) ?
                             <>
-                                <td>
-                                    <Link to={`/users/${user.id}`} style={{color: "black", textDecoration: "none"}}>
-                                        {user.buyer}
-                                    </Link>
-                                </td>
+                                <td>{idx}</td>
+                                <td><Link to={`/users/${user.id}`} style={{color: "black", textDecoration: "none"}}><FaEye/></Link></td>
+                                <td>{user.buyer}</td>
                                 <td>{user.invoiceDate}</td>
                                 <td>{user.invoiceNumber}</td>
+                                <td>{user.dateCreated}</td>
                                 <td>
                                     <Link to={`/users/${user.id}`} style={{color: "black", textDecoration: "none"}}>
                                         <FaPrint onClick={print}/>

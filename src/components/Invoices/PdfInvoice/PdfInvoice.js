@@ -29,6 +29,7 @@ const PdfInvoice = () => {
             })
         })
     }, [])
+    localStorage.setItem('iln', imageList.length);
 
     return (
             <Container fluid>
@@ -46,7 +47,7 @@ const PdfInvoice = () => {
                 <Row className={"my-5"}>
                     <Col>
                         <input type="file" onChange={ (e) => {setImageUpload(e.target.files[0])}} />
-                        <button onClick={uploadImage}>Add image</button>
+                        <button className={"btn btn-outline-primary d-block mt-3"} onClick={uploadImage}>Додај слика</button>
                     </Col>
                 </Row>
                 <Row>

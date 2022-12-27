@@ -32,7 +32,8 @@ const ChooseInvoice = ({users, setUsers}) => {
 
     const showTableFilter = () => {
         setShowTableData(false)
-        localStorage.clear();
+        localStorage.removeItem('month');
+        localStorage.removeItem('year');
     }
 
     const removeMultipleMonthsFromSelect = Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(5, 7)]:cur}),{}))
@@ -52,22 +53,25 @@ const ChooseInvoice = ({users, setUsers}) => {
                 </Col>
             </Row>
 
-            {showTableData ?  <Row>
+            {showTableData ?
+            <Row>
                 <Col md={8} className={'m-auto'}>
                     <h2 className={'float-start'}>Одбран приказ: {monthValue} месец / {yearValue} година </h2>
-                    <Button onClick={showTableFilter} className={"show-invoice float-end border-0"}>Одбери нова дата</Button>
+                    <Button onClick={showTableFilter} className={"show-invoice float-end border-0 d-print-none"}>Одбери нова дата</Button>
                 </Col>
             </Row> : null}
 
             <Row>
                 <Col md={8} className={"m-auto"}>
                     <Form>
-                        {!showTableData ? <Row className={"justify-content-center"}>
+                        {!showTableData ?
+                        <Row className={"justify-content-center"}>
                             <Col md={4}>
                                 <Form.Select aria-label="Default select example" value={monthValue} onChange={ e => setMonthValue(e.target.value)}>
                                     <option value="0">Избери Месец</option>
                                     {/*<option value="01">Јануари</option>*/}
                                     {removeMultipleMonthsFromSelect.map((user, idx) => {
+                                        // console.log(user.invoiceDate.substring(5, 7).split().sort())
                                         return (
                                             <option key={idx} value={user.invoiceDate.substring(5, 7)}>{user.invoiceDate.substring(5, 7)}</option>
                                         );
@@ -93,15 +97,18 @@ const ChooseInvoice = ({users, setUsers}) => {
                                     Прикажи
                                 </Button>
                             </Col>
-
                         </Row> : null}
                     </Form>
                 </Col>
 
-                <Col md={8} className={"m-auto pt-5"}>
+                <Col md={8} className={"m-auto pt-5 text-center"}>
                     {showTableData ?
                             <InvoiceTable monthValue={monthValue} yearValue={yearValue} users={users} setUsers={setUsers}/> :
-                            <h2 className={'text-center'}>Одбери месец и година за приказ!</h2>
+                           <>
+                               <h2 className={'text-center'}>Одбери месец и година за приказ!</h2>
+                               <img style={{height: "14em"}} src={"./sorry.svg"}/>
+                           </>
+
                     }
                 </Col>
             </Row>

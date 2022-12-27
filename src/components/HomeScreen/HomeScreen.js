@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import {Col, Form, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FaFile, FaFileContract, FaRegFilePdf} from "react-icons/fa";
-import {useState} from "react";
+import Table from "react-bootstrap/Table";
 const Homescreen = ({users}) => {
     const lightBulbSwitch = () => {
         const app = document.getElementById("root");
@@ -30,12 +30,6 @@ const Homescreen = ({users}) => {
         window.location.reload(true);
     }
 
-    // let [date,setDate] = useState(new Date());
-    // const [whenDocumentIsAdded, setWhenDocumentIsAdded] = useState("")
-
-    const sase = () => {
-        // setWhenDocumentIsAdded(`${date.toLocaleString('en-GB')}`)
-    }
     return (
         <div className="snow">
         <Container>
@@ -60,11 +54,12 @@ const Homescreen = ({users}) => {
                     </Card>
                 </Col>
 
+
                 <Col md={6} className="my-4">
                     <Card className="saved-pdf d-flex justify-content-center align-items-center">
                         <Link className={"text-white text-decoration-none w-100"} to={"/saved-pdf-invoices"}>Зачувани ПДФ фајлови
                             <Card.Body>
-                                Зачувани:  <FaRegFilePdf/>
+                                Зачувани:  {localStorage.getItem('iln')}<FaRegFilePdf/>
                             </Card.Body>
                         </Link>
                     </Card>
@@ -72,7 +67,7 @@ const Homescreen = ({users}) => {
 
                 <Col md={6} className="my-4">
                     <Card className="font-card-color text-white d-flex justify-content-center align-items-center">
-                            <p className={"m-0"} style={{fontSize: "1.2em"}}>Одбери фонт на системот</p>
+                            <h5 className={"m-0 mb-3"}>Одбери фонт на системот</h5>
                             <Form.Select className="w-50 border-0" aria-label="Default select example" id="languageVal" onChange={ e => chooseFontHandler(e.target.value)}>
                                 <option value="">Стандарден</option>
                                 <option value="Alexandria">Alexandria</option>
@@ -83,7 +78,7 @@ const Homescreen = ({users}) => {
 
                 <Col md={6} className="mb-5">
                     <Card className="choose-color text-white d-flex justify-content-center align-items-center">
-                        <p className={"m-0"} style={{fontSize: "1.2em"}}>Одбери боја на системот</p>
+                        <h5 className={"m-0  mb-3"}>Одбери боја на системот</h5>
                         <div className="d-flex w-50 justify-content-around mt-2">
                             <label>Позадина</label>
                             <input type="color" id='bg-colorValue' />
@@ -98,8 +93,23 @@ const Homescreen = ({users}) => {
 
                 <Col md={6} className="mb-5">
                     <Card className="last-file-added text-white d-flex justify-content-center align-items-center">
-                       <p>Последниот фајл е додаден на:</p>
-                        <p>{localStorage.getItem('wdic')}</p>
+                       <h5>Последна додадена фактура:</h5>
+                        <Table className="text-white">
+                            <thead>
+                            <tr>
+                                <th>Време</th>
+                                <th>Име на клиент</th>
+                                <th>Број на ф-ра</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{localStorage.getItem('wdic')}</td>
+                                <td>{localStorage.getItem('lad')}</td>
+                                <td>{localStorage.getItem('ladin')}</td>
+                            </tr>
+                            </tbody>
+                        </Table>
                     </Card>
                 </Col>
             </Row>

@@ -8,10 +8,10 @@ const InvoicesBuyerFields = (props) => {
                 <Row key={i}>
                     <Col md={2}>
                         <FloatingLabel
-                            label="Купувач"
+                            label="Име на клиент"
                         >
                             <Form.Control type="text"
-                              placeholder="Купувач"
+                              placeholder="Име на клиент"
                               name="buyer"
                               value={item.buyer}
                               onChange={e => props.handleInputChangeBuyerFields(e, i)}
@@ -21,10 +21,10 @@ const InvoicesBuyerFields = (props) => {
 
                     <Col md={2}>
                         <FloatingLabel
-                            label="Купувач презиме"
+                            label="Клиент презиме"
                         >
                             <Form.Control type="text"
-                              placeholder="Купувач презиме"
+                              placeholder="Клиент презиме"
                               name="buyerLastName"
                               value={item.buyerLastName}
                               onChange={e => props.handleInputChangeBuyerFields(e, i)}
@@ -73,7 +73,7 @@ const InvoicesBuyerFields = (props) => {
                 </Row>
             );
         })}
-            {/*<div style={{ marginTop: 20 }}>{JSON.stringify(props.inputListBuyerFields)}</div>*/}
+            <div style={{ marginTop: 20 }}>{JSON.stringify(props.inputListBuyerFields)}</div>
         </>
     );
 }

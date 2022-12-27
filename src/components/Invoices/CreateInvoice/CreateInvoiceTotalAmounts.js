@@ -15,7 +15,6 @@ const InvoicesTotalFields = (props) =>{
     let allValuesFromInputBuyerFields = Object.values(props.inputListBuyerFields[0])
 
     let [date,setDate] = useState(new Date());
-
     const createNewInvoice = async () => {
         await  addDoc(props.usersCollectionRef,
             {
@@ -24,6 +23,7 @@ const InvoicesTotalFields = (props) =>{
                 invoiceNumber: props.inputListBuyerFields[0].invoiceNumber,
                 invoiceDate: props.inputListBuyerFields[0].invoiceDate,
                 paymentDue: props.inputListBuyerFields[0].paymentDue,
+                dateCreated: date.toLocaleString('en-GB'),
                 //     middle fields
                 product: [...props.inputList],
                 //     table fields
@@ -33,6 +33,8 @@ const InvoicesTotalFields = (props) =>{
             })
         setMsg(true)
         localStorage.setItem('wdic', date.toLocaleString('en-GB'));
+        localStorage.setItem('lad', props.inputListBuyerFields[0].buyer);
+        localStorage.setItem('ladin', props.inputListBuyerFields[0].invoiceNumber);
         setTimeout(() => {
             setMsg(false)
             window.location.reload(true);

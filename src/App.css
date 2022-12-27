@@ -17,7 +17,6 @@
     background-position: top;
 }
 
-
 nav.navbar,
 button.show-invoice{
     background: #334257!important;
@@ -87,7 +86,8 @@ span.navbar-text{
     color: darkred;
 }
 
-.card a{
+.card a,
+.card h5{
     font-size: 1.4em;
 }
 
