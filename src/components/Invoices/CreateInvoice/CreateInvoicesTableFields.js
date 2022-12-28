@@ -1,6 +1,10 @@
 import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
+import {useSelector} from "react-redux";
+import {translations} from "../../../translation/IntlContext";
 
 const InvoicesTableFields = (props) => {
+    const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
+
     return (
         <Row>
             {props.inputList.map((item, i) => {
@@ -11,10 +15,10 @@ const InvoicesTableFields = (props) => {
                 item.priceWithVat = priceWithVat
                 item.vat = vat
                 return (
-                    <Row className={'mt-1'} key={i}>
+                    <Row className={'mb-4'} key={i}>
                         <Col md={2}>
                             <FloatingLabel
-                                label="Продукт"
+                                label={initalLanguage ? translations.mkTranslations.product: translations.enTranslations.product}
                             >
                                 <Form.Control type="text"
                                   name="product"
@@ -26,7 +30,7 @@ const InvoicesTableFields = (props) => {
 
                         <Col md={1}>
                             <FloatingLabel
-                                label="EM"
+                                label={initalLanguage ? translations.mkTranslations.unit: translations.enTranslations.unit}
                             >
                                 <Form.Control type="text"
                                     disabled
@@ -39,7 +43,7 @@ const InvoicesTableFields = (props) => {
 
                         <Col md={2}>
                             <FloatingLabel
-                                label="Количина"
+                                label={initalLanguage ? translations.mkTranslations.quantity: translations.enTranslations.quantity}
                             >
                                 <Form.Control type="number"
                                   name="quantity"
@@ -51,7 +55,7 @@ const InvoicesTableFields = (props) => {
 
                         <Col md={2}>
                             <FloatingLabel
-                                label="Цена без ДДВ"
+                                label={initalLanguage ? translations.mkTranslations.priceWithoutVat: translations.enTranslations.priceWithoutVat}
                             >
                                 <Form.Control type="number"
                                   name="priceWithoutVat"
@@ -63,7 +67,7 @@ const InvoicesTableFields = (props) => {
 
                         <Col md={1}>
                             <FloatingLabel
-                                label="ДДВ 18%"
+                                label={initalLanguage ? translations.mkTranslations.vat: translations.enTranslations.vat}
                             >
                                 <Form.Control type="number"
                                   disabled
@@ -76,7 +80,7 @@ const InvoicesTableFields = (props) => {
 
                         <Col md={2}>
                             <FloatingLabel
-                                label="Цена со ДДВ"
+                                label={initalLanguage ? translations.mkTranslations.priceWithVat: translations.enTranslations.priceWithVat}
                             >
                                 <Form.Control type="number"
                                   name="priceWithVat"
@@ -89,7 +93,7 @@ const InvoicesTableFields = (props) => {
 
                         <Col md={2}>
                             <FloatingLabel
-                                label="Вкупно ДДВ"
+                                label={initalLanguage ? translations.mkTranslations.totalVat: translations.enTranslations.totalVat}
                             >
                                 <Form.Control type="number"
                                   name="totalVat"
@@ -103,8 +107,8 @@ const InvoicesTableFields = (props) => {
                         <div>
                             {props.inputList.length !== 1 && <Button
                                 className="delete-row border-0 mt-3"
-                                onClick={() => props.handleRemoveClick(i)}>Одстрани</Button>} &nbsp;
-                            {props.inputList.length - 1 === i && <Button className={'new-row border-0 mt-3'} onClick={props.handleAddClick}>Додај нов ред</Button>}
+                                onClick={() => props.handleRemoveClick(i)}>{initalLanguage ? translations.mkTranslations.removeRow: translations.enTranslations.removeRow}</Button>} &nbsp;
+                            {props.inputList.length - 1 === i && <Button className={'new-row border-0 mt-3'} onClick={props.handleAddClick}>{initalLanguage ? translations.mkTranslations.addRow: translations.enTranslations.addRow}</Button>}
                         </div>
                     </Row>
                 );

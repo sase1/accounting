@@ -108,6 +108,11 @@ span.navbar-text{
     background-color: rgba(0,0,0, .4)!important;
 }
 
+.language-selector{
+    position: absolute;
+    left: 30px;
+}
+
 @media print {
     ol.breadcrumb{
         display: none;

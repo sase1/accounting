@@ -4,7 +4,11 @@ import {Col, Form, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FaFile, FaFileContract, FaRegFilePdf} from "react-icons/fa";
 import Table from "react-bootstrap/Table";
+import {useSelector} from "react-redux";
+import {translations} from "../../translation/IntlContext";
 const Homescreen = ({users}) => {
+    const {initalLanguage} = useSelector((state) => state.languageChangeHandler)
+
     const lightBulbSwitch = () => {
         const app = document.getElementById("root");
         const bgColorVal = document.getElementById("bg-colorValue").value;
@@ -36,7 +40,8 @@ const Homescreen = ({users}) => {
             <Row className={"text-center cards pt-5"}>
                 <Col md={6}>
                     <Card className="create-invoice d-flex justify-content-center align-items-center">
-                        <Link className={"text-white text-decoration-none w-100"} to={"/create-invoice"}>Креирај Фактура
+                        <Link className={"text-white text-decoration-none w-100"} to={"/create-invoice"}>
+                            {initalLanguage ? translations.mkTranslations.createInvoice : translations.enTranslations.createInvoice}
                             <Card.Body>
                                 <FaFile/>
                             </Card.Body>
@@ -46,9 +51,10 @@ const Homescreen = ({users}) => {
 
                 <Col md={6}>
                     <Card className="created-invoice d-flex justify-content-center align-items-center">
-                        <Link className={"text-white text-decoration-none w-100"} to={"/choose-invoice"}>Издадени Фактури
+                        <Link className={"text-white text-decoration-none w-100"} to={"/choose-invoice"}>
+                            {initalLanguage ? translations.mkTranslations.createdInvoice : translations.enTranslations.createdInvoice}
                             <Card.Body>
-                                Издадени: {users.length} <FaFileContract/>
+                                {initalLanguage ? translations.mkTranslations.created : translations.enTranslations.created}: {users.length} <FaFileContract/>
                             </Card.Body>
                         </Link>
                     </Card>
@@ -57,9 +63,10 @@ const Homescreen = ({users}) => {
 
                 <Col md={6} className="my-4">
                     <Card className="saved-pdf d-flex justify-content-center align-items-center">
-                        <Link className={"text-white text-decoration-none w-100"} to={"/saved-pdf-invoices"}>Зачувани ПДФ фајлови
+                        <Link className={"text-white text-decoration-none w-100"} to={"/saved-pdf-invoices"}>
+                            {initalLanguage ? translations.mkTranslations.savedPrintedInvoices : translations.enTranslations.savedPrintedInvoices}
                             <Card.Body>
-                                Зачувани:  {localStorage.getItem('iln')}<FaRegFilePdf/>
+                                {initalLanguage ? translations.mkTranslations.printed : translations.enTranslations.printed}:  {localStorage.getItem('iln')}<FaRegFilePdf/>
                             </Card.Body>
                         </Link>
                     </Card>
@@ -67,39 +74,39 @@ const Homescreen = ({users}) => {
 
                 <Col md={6} className="my-4">
                     <Card className="font-card-color text-white d-flex justify-content-center align-items-center">
-                            <h5 className={"m-0 mb-3"}>Одбери фонт на системот</h5>
+                            <h5 className={"m-0 mb-3"}>{initalLanguage ? translations.mkTranslations.chooseSystemFont : translations.enTranslations.chooseSystemFont}</h5>
                             <Form.Select className="w-50 border-0" aria-label="Default select example" id="languageVal" onChange={ e => chooseFontHandler(e.target.value)}>
-                                <option value="">Стандарден</option>
-                                <option value="Alexandria">Alexandria</option>
+                                <option value="">{initalLanguage ? translations.mkTranslations.standard : translations.enTranslations.standard}</option>
+                                <option value="Alexandria">{initalLanguage ? translations.mkTranslations.alexandria : translations.enTranslations.alexandria}</option>
                             </Form.Select>
-                            <button className={'btn btn-danger mt-3 text-white'} onClick={chooseFontHandlerReset}> Ресетирај фонт</button>
+                            <button className={'btn btn-danger mt-3 text-white'} onClick={chooseFontHandlerReset}> {initalLanguage ? translations.mkTranslations.resetFont : translations.enTranslations.resetFont}</button>
                     </Card>
                 </Col>
 
                 <Col md={6} className="mb-5">
                     <Card className="choose-color text-white d-flex justify-content-center align-items-center">
-                        <h5 className={"m-0  mb-3"}>Одбери боја на системот</h5>
+                        <h5 className={"m-0  mb-3"}>{initalLanguage ? translations.mkTranslations.chooseSystemColor : translations.enTranslations.chooseSystemColor}</h5>
                         <div className="d-flex w-50 justify-content-around mt-2">
-                            <label>Позадина</label>
+                            <label>{initalLanguage ? translations.mkTranslations.background : translations.enTranslations.background}</label>
                             <input type="color" id='bg-colorValue' />
-                            <label>Боја</label>
+                            <label>{initalLanguage ? translations.mkTranslations.color : translations.enTranslations.color}</label>
                             <input type="color" id='colorValue' />
                         </div>
                         <br/>
-                        <button className={'btn btn-primary'} onClick={lightBulbSwitch}> Одбери боја</button> &nbsp;
-                        <button className={'btn btn-danger text-white'} onClick={lightBulbSwitchReset}> Ресетирај боја</button>
+                        <button className={'btn btn-primary'} onClick={lightBulbSwitch}> {initalLanguage ? translations.mkTranslations.chooseColor : translations.enTranslations.chooseColor}</button> &nbsp;
+                        <button className={'btn btn-danger text-white'} onClick={lightBulbSwitchReset}> {initalLanguage ? translations.mkTranslations.resetColor : translations.enTranslations.resetColor}</button>
                     </Card>
                 </Col>
 
                 <Col md={6} className="mb-5">
                     <Card className="last-file-added text-white d-flex justify-content-center align-items-center">
-                       <h5>Последна додадена фактура:</h5>
+                       <h5>{initalLanguage ? translations.mkTranslations.lastAddedInvoice : translations.enTranslations.lastAddedInvoice}:</h5>
                         <Table className="text-white">
                             <thead>
                             <tr>
-                                <th>Време</th>
-                                <th>Име на клиент</th>
-                                <th>Број на ф-ра</th>
+                                <th>{initalLanguage ? translations.mkTranslations.time : translations.enTranslations.time}</th>
+                                <th>{initalLanguage ? translations.mkTranslations.clientName : translations.enTranslations.clientName}</th>
+                                <th>{initalLanguage ? translations.mkTranslations.invoiceNumber : translations.enTranslations.invoiceNumber}</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -7,8 +7,11 @@ import CreateInvoiceTotalAmounts from "./CreateInvoiceTotalAmounts";
 import {useState} from "react";
 import CreateInvoiceSignFields from "./CreateInvoiceSignFields";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {translations} from "../../../translation/IntlContext";
 
 const CreateInvoice = (props) => {
+    const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
     const [inputList, setInputList] = useState([{ product: "", em: "m2", quantity: "", priceWithoutVat: "",  vat: "", priceWithVat: "", totalVat: "" }]);
     const [inputListBuyerFields, setInputListBuyerFields] = useState([{ buyer: "", buyerLastName: "", invoiceNumber: "", invoiceDate: "", paymentDue: "", dateCreated: "" }]);
     // handle input change
@@ -44,9 +47,9 @@ const CreateInvoice = (props) => {
                     <Col className={'mt-3'}>
                         <Breadcrumb>
                             <Breadcrumb>
-                                <Link to={'/home'}>Почетна</Link>
+                                <Link to={'/home'}>{initalLanguage ? translations.mkTranslations.homeScreen: translations.enTranslations.homeScreen} </Link>
                             </Breadcrumb> &nbsp; / &nbsp;
-                            <Breadcrumb.Item active href="/create-invoice">Креирај Фактура</Breadcrumb.Item>
+                            <Breadcrumb.Item active href="/create-invoice">{initalLanguage ? translations.mkTranslations.createInvoice: translations.enTranslations.createInvoice} </Breadcrumb.Item>
                         </Breadcrumb>
                     </Col>
                 </Row>

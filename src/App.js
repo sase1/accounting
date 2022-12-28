@@ -1,4 +1,4 @@
-import Navbar from "./components/LoginScreen/Navbar";
+import Navbar from "./components/Navbar";
 import CreateForm from "./components/LoginScreen/CreateForm";
 import HomeScreen from "./components/HomeScreen/HomeScreen";
 import ChooseInvoice from "./components/Invoices/ChoseInvoice/ChooseInvoice";
@@ -16,6 +16,8 @@ import {onAuthStateChanged} from "firebase/auth"
 import LoginForm from "./components/LoginScreen/LoginForm";
 import WelcomeScreen from "./components/LoginScreen/WelcomeScreen";
 import PdfInvoice from "./components/Invoices/PdfInvoice/PdfInvoice";
+import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl'
+import {translations} from "./translation/IntlContext";
 
 const App = () => {
     const [user, setUser] = useState({})
@@ -41,11 +43,12 @@ const App = () => {
 
     return (
       <BrowserRouter>
+          <IntlProvider messages={translations} locale="en">
           <Navbar user={user}/>
           <Routes>
               <Route path={"/"} element={<WelcomeScreen/>} />
-              <Route path={"/create"} element={<CreateForm />} />
-              <Route path={"/login"} element={<LoginForm />} />
+              {/*<Route path={"/create"} element={<CreateForm />} />*/}
+              <Route path={"/login"} element={<LoginForm/>} />
 
             <Route path={"/home"} element={
                 <ProtectedRoute user={user}>
@@ -83,6 +86,7 @@ const App = () => {
             />
             <Route path={"*"} element={<ErrorPage />} />
         </Routes>
+          </IntlProvider>
       </BrowserRouter>
   );
 }

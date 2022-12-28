@@ -5,16 +5,11 @@ import Container from "react-bootstrap/Container";
 import {Link} from "react-router-dom";
 import CreateInvoiceUpperFields from "../CreateInvoice/CreateInvoicesUpperFields";
 import CreateInvoiceSignFields from "../CreateInvoice/CreateInvoiceSignFields";
+import {useSelector} from "react-redux";
+import {translations} from "../../../translation/IntlContext";
 
 const SeeInvoice = ({users}) => {
-
-    // useEffect(() => {
-    //     window.onafterprint = back;
-    // }, []);
-    //
-    // const back = () => {
-    //     window.history.back();
-    // }
+    const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
     const {id} = useParams();
     return (
         <Container fluid>
@@ -22,9 +17,12 @@ const SeeInvoice = ({users}) => {
                 <Col className={'mt-3'}>
                     <Breadcrumb>
                         <Breadcrumb>
-                            <Link to={'/choose-invoice'}>Избери Фактура</Link>
+                            <Link to={'/'}> {initalLanguage ? translations.mkTranslations.homeScreen: translations.enTranslations.homeScreen}</Link>
                         </Breadcrumb> &nbsp; / &nbsp;
-                        <Breadcrumb.Item active href="/choose-invoice">Фактура : {id}</Breadcrumb.Item>
+                        <Breadcrumb>
+                            <Link to={'/choose-invoice'}> {initalLanguage ? translations.mkTranslations.createdInvoice: translations.enTranslations.createdInvoice}</Link>
+                        </Breadcrumb> &nbsp; / &nbsp;
+                        <Breadcrumb.Item active href="/choose-invoice"> {initalLanguage ? translations.mkTranslations.invoice: translations.enTranslations.invoice}: {id}</Breadcrumb.Item>
                     </Breadcrumb>
                 </Col>
             </Row>
@@ -38,31 +36,31 @@ const SeeInvoice = ({users}) => {
                     <Col md={12} className={"my-5"}>
                         <Row>
                             <Col md={2}>
-                                <FloatingLabel label="Купувач">
+                                <FloatingLabel label={initalLanguage ? translations.mkTranslations.clientName: translations.enTranslations.clientName}>
                                     <Form.Control value={user.buyer} readOnly/>
                                 </FloatingLabel>
                             </Col>
 
                             <Col md={2}>
-                                <FloatingLabel label="Купувач презиме">
+                                <FloatingLabel label={initalLanguage ? translations.mkTranslations.clientLastName: translations.enTranslations.clientLastName}>
                                     <Form.Control value={user.buyerLastName} readOnly />
                                 </FloatingLabel>
                             </Col>
 
                             <Col md={2}>
-                                <FloatingLabel  label="Број на фактура">
+                                <FloatingLabel  label={initalLanguage ? translations.mkTranslations.invoiceNumber: translations.enTranslations.invoiceNumber}>
                                     <Form.Control value={user.invoiceNumber} readOnly />
                                 </FloatingLabel>
                             </Col>
 
                             <Col md={2}>
-                                <FloatingLabel label="Датум на фактура">
+                                <FloatingLabel label={initalLanguage ? translations.mkTranslations.invoiceDate: translations.enTranslations.invoiceDate}>
                                     <Form.Control value={user.invoiceDate} readOnly />
                                 </FloatingLabel>
                             </Col>
 
                             <Col md={2}>
-                                <FloatingLabel label="Рок на уплата">
+                                <FloatingLabel label={initalLanguage ? translations.mkTranslations.invoiceDueDate: translations.enTranslations.invoiceDueDate}>
                                     <Form.Control value={user.paymentDue} readOnly />
                                 </FloatingLabel>
                             </Col>
@@ -75,13 +73,13 @@ const SeeInvoice = ({users}) => {
                             <Col md={2}>
                                 {
                                     typeof user.product === 'string' ?
-                                    <FloatingLabel label="Продукт">
+                                    <FloatingLabel label={initalLanguage ? translations.mkTranslations.product: translations.enTranslations.product}>
                                         <Form.Control value={ user.product} readOnly/>
                                     </FloatingLabel>
                                     :
                                     user.product.map((item, idx) => {
                                         return (
-                                            <FloatingLabel key={idx} label="Продукт">
+                                            <FloatingLabel key={idx} label={initalLanguage ? translations.mkTranslations.product: translations.enTranslations.product}>
                                                 <Form.Control value={ item.product} readOnly className={"mb-2"} />
                                             </FloatingLabel>
                                         )
@@ -92,13 +90,13 @@ const SeeInvoice = ({users}) => {
                             <Col md={1}>
                                 {
                                     typeof user.product === 'string' ?
-                                        <FloatingLabel label="em">
+                                        <FloatingLabel label={initalLanguage ? translations.mkTranslations.unit: translations.enTranslations.unit}>
                                             <Form.Control value={ user.em} readOnly/>
                                         </FloatingLabel>
                                         :
                                         user.product.map((item,idx) => {
                                             return (
-                                                <FloatingLabel key={idx} label="em">
+                                                <FloatingLabel key={idx} label={initalLanguage ? translations.mkTranslations.unit: translations.enTranslations.unit}>
                                                     <Form.Control value={ item.em} readOnly className={"mb-2"} />
                                                 </FloatingLabel>
                                             )
@@ -109,13 +107,13 @@ const SeeInvoice = ({users}) => {
                             <Col md={2}>
                                 {
                                     typeof user.product === 'string' ?
-                                        <FloatingLabel label="Количина">
+                                        <FloatingLabel label={initalLanguage ? translations.mkTranslations.quantity: translations.enTranslations.quantity}>
                                             <Form.Control value={ user.quantity} readOnly/>
                                         </FloatingLabel>
                                         :
                                         user.product.map((item,idx) => {
                                             return (
-                                                <FloatingLabel key={idx} label="Количина">
+                                                <FloatingLabel key={idx} label={initalLanguage ? translations.mkTranslations.quantity: translations.enTranslations.quantity}>
                                                     <Form.Control value={ item.quantity} readOnly className={"mb-2"} />
                                                 </FloatingLabel>
                                             )
@@ -126,13 +124,13 @@ const SeeInvoice = ({users}) => {
                             <Col md={2}>
                                 {
                                     typeof user.product === 'string' ?
-                                        <FloatingLabel label="Цена без ДДВ">
+                                        <FloatingLabel label={initalLanguage ? translations.mkTranslations.priceWithoutVat: translations.enTranslations.priceWithoutVat}>
                                             <Form.Control value={ user.priceWithoutVat} readOnly/>
                                         </FloatingLabel>
                                         :
                                         user.product.map((item,idx) => {
                                             return (
-                                                <FloatingLabel key={idx} label="Цена без ДДВ">
+                                                <FloatingLabel key={idx} label={initalLanguage ? translations.mkTranslations.priceWithoutVat: translations.enTranslations.priceWithoutVat}>
                                                     <Form.Control value={ item.priceWithoutVat} readOnly className={"mb-2"} />
                                                 </FloatingLabel>
                                             )
@@ -143,13 +141,13 @@ const SeeInvoice = ({users}) => {
                             <Col md={1}>
                                 {
                                     typeof user.product === 'string' ?
-                                        <FloatingLabel label="ДДВ 18%">
+                                        <FloatingLabel label={initalLanguage ? translations.mkTranslations.vat: translations.enTranslations.vat}>
                                             <Form.Control value={ user.vat} readOnly/>
                                         </FloatingLabel>
                                         :
                                         user.product.map((item,idx) => {
                                             return (
-                                                <FloatingLabel key={idx} label="ДДВ 18%">
+                                                <FloatingLabel key={idx} label={initalLanguage ? translations.mkTranslations.vat: translations.enTranslations.vat}>
                                                     <Form.Control value={ item.vat} readOnly className={"mb-2"} />
                                                 </FloatingLabel>
                                             )
@@ -160,13 +158,13 @@ const SeeInvoice = ({users}) => {
                             <Col md={2}>
                                 {
                                     typeof user.product === 'string' ?
-                                        <FloatingLabel label="Цена со ДДВ">
+                                        <FloatingLabel label={initalLanguage ? translations.mkTranslations.priceWithVat: translations.enTranslations.priceWithVat}>
                                             <Form.Control value={ user.priceWithVat} readOnly/>
                                         </FloatingLabel>
                                         :
                                         user.product.map((item,idx) => {
                                             return (
-                                                <FloatingLabel key={idx} label="Цена со ДДВ">
+                                                <FloatingLabel key={idx} label={initalLanguage ? translations.mkTranslations.priceWithVat: translations.enTranslations.priceWithVat}>
                                                     <Form.Control value={ item.priceWithVat} readOnly className={"mb-2"} />
                                                 </FloatingLabel>
                                             )
@@ -177,13 +175,13 @@ const SeeInvoice = ({users}) => {
                             <Col md={2}>
                                 {
                                     typeof user.product === 'string' ?
-                                        <FloatingLabel label="Вкупно ДДВ">
+                                        <FloatingLabel label={initalLanguage ? translations.mkTranslations.totalVat: translations.enTranslations.totalVat}>
                                             <Form.Control value={ user.totalVat} readOnly/>
                                         </FloatingLabel>
                                         :
                                         user.product.map((item,idx) => {
                                             return (
-                                                <FloatingLabel key={idx} label="Вкупно ДДВ">
+                                                <FloatingLabel key={idx} label={initalLanguage ? translations.mkTranslations.totalVat: translations.enTranslations.totalVat}>
                                                     <Form.Control value={ item.totalVat} readOnly className={"mb-2"} />
                                                 </FloatingLabel>
                                             )
@@ -202,10 +200,10 @@ const SeeInvoice = ({users}) => {
                         <Row className={"mt-5"}>
                             <Col md={{ span: 4, offset: 8 }}>
                                 <ListGroup>
-                                    <ListGroup.Item disabled>Вкупна цена без ДДВ <span className={'float-end'}>{user.finalSumWithoutVat}</span> </ListGroup.Item>
-                                    <ListGroup.Item disabled>Вкупна цена со ДДВ <span className={'float-end'}>{user.finalSumWithVat}</span> </ListGroup.Item>
+                                    <ListGroup.Item disabled>{initalLanguage ? translations.mkTranslations.totalPriceWithoutVAT: translations.enTranslations.totalPriceWithoutVAT} <span className={'float-end'}>{user.finalSumWithoutVat}</span> </ListGroup.Item>
+                                    <ListGroup.Item disabled>{initalLanguage ? translations.mkTranslations.totalPriceWithVAT: translations.enTranslations.totalPriceWithVAT} <span className={'float-end'}>{user.finalSumWithVat}</span> </ListGroup.Item>
                                     {/*<ListGroup.Item disabled>Разлика од заокружување <span className={'float-end'}></span> </ListGroup.Item>*/}
-                                    <ListGroup.Item disabled>Вкупно за наплата во денари <span className={'float-end'}>{user.finalSumWithVat}</span> </ListGroup.Item>
+                                    <ListGroup.Item disabled>{initalLanguage ? translations.mkTranslations.totalForPayment: translations.enTranslations.totalForPayment} <span className={'float-end'}>{user.finalSumWithVat}</span> </ListGroup.Item>
                                 </ListGroup>
                             </Col>
                         </Row>

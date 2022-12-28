@@ -2,7 +2,11 @@ import {Col, ListGroup, Row} from "react-bootstrap";
 import {addDoc} from "firebase/firestore";
 import {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
+import {translations} from "../../../translation/IntlContext";
+import {useSelector} from "react-redux";
 const InvoicesTotalFields = (props) =>{
+    const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
+
     const [msg, setMsg] = useState(false)
     const [showFillFieldsMessage, setShowFillFieldsMessage] = useState(true)
     const totalSumWithoutVatArray = props.inputList.map(item => Number(item.quantity * item.priceWithoutVat));
@@ -60,10 +64,10 @@ const InvoicesTotalFields = (props) =>{
             </Col>
             <Col md={{ span: 4, offset: 8 }}>
                 <ListGroup>
-                    <ListGroup.Item>Вкупна цена без ДДВ <span className={'float-end'}>{finalSumWithoutVat}</span> </ListGroup.Item>
-                    <ListGroup.Item>Вкупна цена со ДДВ <span className={'float-end'}>{finalSumWithVat}</span> </ListGroup.Item>
+                    <ListGroup.Item>{initalLanguage ? translations.mkTranslations.totalPriceWithoutVAT: translations.enTranslations.totalPriceWithoutVAT}<span className={'float-end'}>{finalSumWithoutVat}</span> </ListGroup.Item>
+                    <ListGroup.Item>{initalLanguage ? translations.mkTranslations.totalPriceWithVAT: translations.enTranslations.totalPriceWithVAT}  <span className={'float-end'}>{finalSumWithVat}</span> </ListGroup.Item>
                     {/*<ListGroup.Item>Разлика од заокружување <span className={'float-end'}></span> </ListGroup.Item>*/}
-                    <ListGroup.Item>Вкупно за наплата во денари <span className={'float-end'}>{finalSumWithVat}</span> </ListGroup.Item>
+                    <ListGroup.Item>{initalLanguage ? translations.mkTranslations.totalForPayment: translations.enTranslations.totalForPayment} <span className={'float-end'}>{finalSumWithVat}</span> </ListGroup.Item>
                 </ListGroup>
             </Col>
 
@@ -71,14 +75,14 @@ const InvoicesTotalFields = (props) =>{
                 {showFillFieldsMessage &&
                     <span
                         style={{fontSize: "10px"}}
-                        className="mt-4 d-inline-block float-start">Пополни ги полињата: Купувач, Број на ф-ра, и Датум на ф-ра за да зачуваш
+                        className="mt-4 d-inline-block float-start">{initalLanguage ? translations.mkTranslations.fillTheFields: translations.enTranslations.fillTheFields}
                     </span>}
                 <Button
                     className={"text-white mt-3 float-end"}
                     onClick={createNewInvoice}
                     disabled={disabledButton}
                     >
-                        Зачувај фактура
+                    {initalLanguage ? translations.mkTranslations.saveInvoice: translations.enTranslations.saveInvoice}
                 </Button>
             </Col>
         </Row>

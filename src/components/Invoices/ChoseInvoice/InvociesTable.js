@@ -6,8 +6,12 @@ import {useEffect, useState} from "react";
 import {Col, FormControl, FormGroup, Row} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {FaEye, FaPrint, FaShoePrints, FaTrash} from "react-icons/fa";
+import {useSelector} from "react-redux";
+import {translations} from "../../../translation/IntlContext";
 
 const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
+    const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
+
     useEffect(() => {
     }, [users]);
     const deleteInvoice = async (id) => {
@@ -40,35 +44,35 @@ const InvoiceTable = ({users, setUsers, monthValue, yearValue}) => {
             <Row className={"d-print-none"}>
                 <Col md={4}>
                     <FormGroup className="mb-4">
-                        <FormControl type="text" value={searchClient} onChange={(e) => setSearchClient(e.target.value)} placeholder="Пребарување според клиент"/>
+                        <FormControl type="text" value={searchClient} onChange={(e) => setSearchClient(e.target.value)} placeholder={initalLanguage ? translations.mkTranslations.clientSearhFilter : translations.enTranslations.clientSearhFilter}/>
                     </FormGroup>
                 </Col>
 
                 <Col md={4}>
                     <FormGroup className="mb-4">
-                        <FormControl type="text" value={searchInvoice} onChange={(e) => setSearchInvoice(e.target.value)} placeholder="Пребарување според број на фактура" />
+                        <FormControl type="text" value={searchInvoice} onChange={(e) => setSearchInvoice(e.target.value)} placeholder={initalLanguage ? translations.mkTranslations.invoiceNumberSearchFilter : translations.enTranslations.invoiceNumberSearchFilter} />
                     </FormGroup>
                 </Col>
 
                 <Col md={2}>
-                    <Button className={"delete-filter border-0"} onClick={resetFilters}>Избриши филтри</Button>
+                    <Button className={"delete-filter border-0"} onClick={resetFilters}>{initalLanguage ? translations.mkTranslations.removeFilters : translations.enTranslations.removeFilters}</Button>
                 </Col>
 
                 <Col md={2}>
-                    <Button className={"border-0 float-end"} onClick={printTable}>Принтај табела <FaShoePrints/></Button>
+                    <Button className={"border-0 float-end"} onClick={printTable}>{initalLanguage ? translations.mkTranslations.printTable : translations.enTranslations.printTable} <FaShoePrints/></Button>
                 </Col>
             </Row>
             <Table className={'text-center table-hover table-responsive bg-white shadow rounded see-invoice'}>
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Отвори</th>
-                    <th>Име на клиент</th>
-                    <th>Датум на фактура</th>
-                    <th>Број на фактура</th>
-                    <th>Датум на креирање</th>
-                    <th>Принтај</th>
-                    <th>Избриши</th>
+                    <th>{initalLanguage ? translations.mkTranslations.open : translations.enTranslations.open}</th>
+                    <th>{initalLanguage ? translations.mkTranslations.clientName : translations.enTranslations.clientName}</th>
+                    <th>{initalLanguage ? translations.mkTranslations.invoiceDate : translations.enTranslations.invoiceDate}</th>
+                    <th>{initalLanguage ? translations.mkTranslations.invoiceNumber : translations.enTranslations.invoiceNumber}</th>
+                    <th>{initalLanguage ? translations.mkTranslations.invoiceCreatedDate : translations.enTranslations.invoiceCreatedDate}</th>
+                    <th>{initalLanguage ? translations.mkTranslations.print : translations.enTranslations.print}</th>
+                    <th>{initalLanguage ? translations.mkTranslations.delete : translations.enTranslations.delete}</th>
                 </tr>
                 </thead>
                 <tbody>

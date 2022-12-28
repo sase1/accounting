@@ -1,6 +1,10 @@
 import {Col, FloatingLabel, Form, Row} from "react-bootstrap";
+import {useSelector} from "react-redux";
+import {translations} from "../../../translation/IntlContext";
 
 const InvoicesBuyerFields = (props) => {
+    const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
+
     return (
         <>
         {props.inputListBuyerFields.map((item, i) => {
@@ -8,10 +12,10 @@ const InvoicesBuyerFields = (props) => {
                 <Row key={i}>
                     <Col md={2}>
                         <FloatingLabel
-                            label="Име на клиент"
+                            label={initalLanguage ? translations.mkTranslations.clientLastName: translations.enTranslations.clientLastName}
                         >
                             <Form.Control type="text"
-                              placeholder="Име на клиент"
+                              placeholder="a"
                               name="buyer"
                               value={item.buyer}
                               onChange={e => props.handleInputChangeBuyerFields(e, i)}
@@ -21,10 +25,10 @@ const InvoicesBuyerFields = (props) => {
 
                     <Col md={2}>
                         <FloatingLabel
-                            label="Клиент презиме"
+                            label={initalLanguage ? translations.mkTranslations.clientLastName: translations.enTranslations.clientLastName}
                         >
                             <Form.Control type="text"
-                              placeholder="Клиент презиме"
+                              placeholder="a"
                               name="buyerLastName"
                               value={item.buyerLastName}
                               onChange={e => props.handleInputChangeBuyerFields(e, i)}
@@ -34,10 +38,10 @@ const InvoicesBuyerFields = (props) => {
 
                     <Col md={2}>
                         <FloatingLabel
-                            label="Број на фактура"
+                            label={initalLanguage ? translations.mkTranslations.invoiceNumber: translations.enTranslations.invoiceNumber}
                         >
                             <Form.Control type="number"
-                              placeholder="Број на фактура"
+                              placeholder="a"
                               name="invoiceNumber"
                               value={item.invoiceNumber}
                               onChange={e => props.handleInputChangeBuyerFields(e, i)}
@@ -47,10 +51,10 @@ const InvoicesBuyerFields = (props) => {
 
                     <Col md={2}>
                         <FloatingLabel
-                            label="Датум на фактура"
+                            label={initalLanguage ? translations.mkTranslations.invoiceDate: translations.enTranslations.invoiceDate}
                         >
                             <Form.Control type="date"
-                              placeholder="Датум на фактура"
+                              placeholder=""
                               name="invoiceDate"
                               value={item.invoiceDate}
                               onChange={e => props.handleInputChangeBuyerFields(e, i)}
@@ -60,10 +64,10 @@ const InvoicesBuyerFields = (props) => {
 
                     <Col md={2}>
                         <FloatingLabel
-                            label="Рок на уплата"
+                            label={initalLanguage ? translations.mkTranslations.invoiceDueDate: translations.enTranslations.invoiceDueDate}
                         >
                             <Form.Control type="date"
-                              placeholder="Рок на уплата"
+                              placeholder=""
                               name="paymentDue"
                               value={item.paymentDue}
                               onChange={e => props.handleInputChangeBuyerFields(e, i)}
@@ -73,7 +77,7 @@ const InvoicesBuyerFields = (props) => {
                 </Row>
             );
         })}
-            <div style={{ marginTop: 20 }}>{JSON.stringify(props.inputListBuyerFields)}</div>
+            {/*<div style={{ marginTop: 20 }}>{JSON.stringify(props.inputListBuyerFields)}</div>*/}
         </>
     );
 }

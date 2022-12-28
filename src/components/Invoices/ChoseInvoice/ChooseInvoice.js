@@ -5,8 +5,12 @@ import Button from 'react-bootstrap/Button';
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import InvoiceTable from "./InvociesTable";
+import {useSelector} from "react-redux";
+import {translations} from "../../../translation/IntlContext";
 
 const ChooseInvoice = ({users, setUsers}) => {
+    const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
+
     const [monthValue, setMonthValue] = useState('')
     const [yearValue, setYearValue] = useState('')
     const [showTableData, setShowTableData] = useState(true)
@@ -46,9 +50,9 @@ const ChooseInvoice = ({users, setUsers}) => {
                 <Col className={'mt-3'}>
                     <Breadcrumb>
                         <Breadcrumb>
-                            <Link to={'/home'}>Почетна</Link>
+                            <Link to={'/home'}>{initalLanguage ? translations.mkTranslations.homeScreen : translations.enTranslations.homeScreen}</Link>
                         </Breadcrumb> &nbsp; / &nbsp;
-                        <Breadcrumb.Item active href="/choose-invoice">Издадени Фактури</Breadcrumb.Item>
+                        <Breadcrumb.Item active href="/choose-invoice">{initalLanguage ? translations.mkTranslations.createdInvoice : translations.enTranslations.createdInvoice}</Breadcrumb.Item>
                     </Breadcrumb>
                 </Col>
             </Row>
@@ -56,8 +60,10 @@ const ChooseInvoice = ({users, setUsers}) => {
             {showTableData ?
             <Row>
                 <Col md={8} className={'m-auto'}>
-                    <h2 className={'float-start'}>Одбран приказ: {monthValue} месец / {yearValue} година </h2>
-                    <Button onClick={showTableFilter} className={"show-invoice float-end border-0 d-print-none"}>Одбери нова дата</Button>
+                    <h2 className={'float-start'}>{initalLanguage ? translations.mkTranslations.selectedView : translations.enTranslations.selectedView}:
+                        <span className={"text-danger"}> {monthValue} {initalLanguage ? translations.mkTranslations.month : translations.enTranslations.month} / {yearValue} {initalLanguage ? translations.mkTranslations.year : translations.enTranslations.year}</span>
+                    </h2>
+                    <Button onClick={showTableFilter} className={"show-invoice float-end border-0 d-print-none"}>{initalLanguage ? translations.mkTranslations.chooseNewData : translations.enTranslations.chooseNewData}</Button>
                 </Col>
             </Row> : null}
 
@@ -68,7 +74,7 @@ const ChooseInvoice = ({users, setUsers}) => {
                         <Row className={"justify-content-center"}>
                             <Col md={4}>
                                 <Form.Select aria-label="Default select example" value={monthValue} onChange={ e => setMonthValue(e.target.value)}>
-                                    <option value="0">Избери Месец</option>
+                                    <option value="0">{initalLanguage ? translations.mkTranslations.chooseMonth : translations.enTranslations.chooseMonth}</option>
                                     {/*<option value="01">Јануари</option>*/}
                                     {removeMultipleMonthsFromSelect.map((user, idx) => {
                                         // console.log(user.invoiceDate.substring(5, 7).split().sort())
@@ -81,7 +87,7 @@ const ChooseInvoice = ({users, setUsers}) => {
 
                             <Col md={4}>
                                 <Form.Select aria-label="Default select example" value={yearValue} onChange={ e => setYearValue(e.target.value)}>
-                                    <option value="0">Избери Година</option>
+                                    <option value="0">{initalLanguage ? translations.mkTranslations.chooseYear : translations.enTranslations.chooseYear}</option>
                                     {/*<option value="2018">2018</option>*/}
                                     {removeMultipleYearsFromSelect.map((user, idx) => {
                                         return (
@@ -94,7 +100,7 @@ const ChooseInvoice = ({users, setUsers}) => {
 
                             <Col md={2}>
                                 <Button className={"show-invoice border-0"} onClick={showTable}>
-                                    Прикажи
+                                    {initalLanguage ? translations.mkTranslations.show : translations.enTranslations.show}
                                 </Button>
                             </Col>
                         </Row> : null}
@@ -105,7 +111,7 @@ const ChooseInvoice = ({users, setUsers}) => {
                     {showTableData ?
                             <InvoiceTable monthValue={monthValue} yearValue={yearValue} users={users} setUsers={setUsers}/> :
                            <>
-                               <h2 className={'text-center'}>Одбери месец и година за приказ!</h2>
+                               <h2 className={'text-center'}>{initalLanguage ? translations.mkTranslations.chooseMonthAndYearToShow : translations.enTranslations.chooseMonthAndYearToShow}</h2>
                                <img style={{height: "14em"}} src={"./sorry.svg"}/>
                            </>
 
