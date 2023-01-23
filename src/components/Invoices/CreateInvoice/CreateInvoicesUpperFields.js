@@ -1,13 +1,14 @@
 import {Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import {translations} from "../../../translation/IntlContext";
+
 const CreateInvoiceUpperFields = () => {
     const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
 
     return (
             <Row>
                 <Col md={2}>
-                    <img src={'./sase.png'} className={'img-fluid'} alt={'imageOfAccount'}/>
+                    <div className={"firm-image"}></div>
                 </Col>
                 <Col md={10}>
                     <Row>

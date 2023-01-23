@@ -13,6 +13,7 @@ export const translations = {
         internetSystem: "Интернет Систем",
         create: "Креирај корисник",
         email: "Имејл",
+        contactMe: "Контакт за системот",
         password: "Лозинка",
         enterEmail: "Внеси имејл",
         enterPassword: "Внеси лозинка",
@@ -53,8 +54,8 @@ export const translations = {
         chooseMonth: "Одбери месец",
         chooseYear: "Одбери година",
         show: "Прикажи",
-        month: "Година",
-        year: "Месец",
+        month: "Месец",
+        year: "Година",
         clientSearhFilter: "Пребарување според клиент",
         invoiceNumberSearchFilter: "Пребарување според број на фактура",
         removeFilters: "Избриши филтри",
@@ -67,7 +68,7 @@ export const translations = {
         // invoice table page
         invoice: "Фактура",
         clientName: "Име на клиент",
-        clientLastName: "Презиме na клиент",
+        clientLastName: "Презиме на клиент",
         invoiceDueDate: "Рок на уплата",
         product: "Продукт",
         quantity: "Количина",
@@ -92,7 +93,9 @@ export const translations = {
         addRow: "Додај ред",
         removeRow: "Одстрани ред",
         saveInvoice: "Зачувај фактура",
-        fillTheFields: "Пополни ги полињата: Купувач, Број на ф-ра, и Датум на ф-ра за да зачуваш"
+        fillTheFields: "Пополни ги полињата: Купувач, Број на ф-ра, и Датум на ф-ра за да зачуваш",
+        invoiceAddedSuccessfully: "Успешно зачувана фактура!"
+
     },
 
     enTranslations: {
@@ -109,6 +112,7 @@ export const translations = {
         internetSystem: "Internet System",
         create: "Create user",
         email: "E-mail",
+        contactMe: "Contact for the system",
         password: "Password",
         enterEmail: "Enter email",
         enterPassword: "Enter password",
@@ -188,7 +192,8 @@ export const translations = {
         addRow: "Add row",
         removeRow: "Remove row",
         saveInvoice: "Save the invoice",
-        fillTheFields: "Fill in the fields: Buyer, Invoice Number, and Invoice Date to save"
+        fillTheFields: "Fill in the fields: Buyer, Invoice Number, and Invoice Date to save",
+        invoiceAddedSuccessfully: "Invoice added successfully!"
             }
 }
 

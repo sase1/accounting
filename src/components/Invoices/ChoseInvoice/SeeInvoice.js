@@ -17,7 +17,7 @@ const SeeInvoice = ({users}) => {
                 <Col className={'mt-3'}>
                     <Breadcrumb>
                         <Breadcrumb>
-                            <Link to={'/'}> {initalLanguage ? translations.mkTranslations.homeScreen: translations.enTranslations.homeScreen}</Link>
+                            <Link to={'/home'}> {initalLanguage ? translations.mkTranslations.homeScreen: translations.enTranslations.homeScreen}</Link>
                         </Breadcrumb> &nbsp; / &nbsp;
                         <Breadcrumb>
                             <Link to={'/choose-invoice'}> {initalLanguage ? translations.mkTranslations.createdInvoice: translations.enTranslations.createdInvoice}</Link>
@@ -207,9 +207,7 @@ const SeeInvoice = ({users}) => {
                                 </ListGroup>
                             </Col>
                         </Row>
-                        <Row>
-                            <CreateInvoiceSignFields/>
-                        </Row>
+                        <CreateInvoiceSignFields/>
                     </Col>
                     </div>
                 )

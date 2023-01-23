@@ -16,7 +16,7 @@ import {onAuthStateChanged} from "firebase/auth"
 import LoginForm from "./components/LoginScreen/LoginForm";
 import WelcomeScreen from "./components/LoginScreen/WelcomeScreen";
 import PdfInvoice from "./components/Invoices/PdfInvoice/PdfInvoice";
-import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl'
+import {IntlProvider} from 'react-intl'
 import {translations} from "./translation/IntlContext";
 
 const App = () => {

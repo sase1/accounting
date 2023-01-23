@@ -5,7 +5,7 @@ import {translations} from "../../translation/IntlContext";
 const WelcomeScreen = () => {
     const {initalLanguage} = useSelector((state) => state.languageChangeHandler)
     return (
-        <div className={"d-flex justify-content-center align-items-center home text-white"}>
+        <div className={"d-flex justify-content-center align-items-center text-secondary vh-100"}>
             <h1>М<span className="text-danger">{initalLanguage ? translations.mkTranslations.modalLogo : translations.enTranslations.modalLogo}</span></h1>
         </div>
     )

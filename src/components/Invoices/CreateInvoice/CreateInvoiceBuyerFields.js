@@ -12,7 +12,7 @@ const InvoicesBuyerFields = (props) => {
                 <Row key={i}>
                     <Col md={2}>
                         <FloatingLabel
-                            label={initalLanguage ? translations.mkTranslations.clientLastName: translations.enTranslations.clientLastName}
+                            label={initalLanguage ? translations.mkTranslations.clientName: translations.enTranslations.clientName}
                         >
                             <Form.Control type="text"
                               placeholder="a"

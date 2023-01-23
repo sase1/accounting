@@ -1,4 +1,4 @@
-import {Col, ListGroup, Row} from "react-bootstrap";
+import {Col, ListGroup, Modal, ModalBody, Row} from "react-bootstrap";
 import {addDoc} from "firebase/firestore";
 import {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
@@ -6,8 +6,8 @@ import {translations} from "../../../translation/IntlContext";
 import {useSelector} from "react-redux";
 const InvoicesTotalFields = (props) =>{
     const { initalLanguage } = useSelector((state) => state.languageChangeHandler)
+    const [show, setShow] = useState(false);
 
-    const [msg, setMsg] = useState(false)
     const [showFillFieldsMessage, setShowFillFieldsMessage] = useState(true)
     const totalSumWithoutVatArray = props.inputList.map(item => Number(item.quantity * item.priceWithoutVat));
     const finalSumWithoutVat = totalSumWithoutVatArray.reduce((a, b) => a + b);
@@ -35,14 +35,14 @@ const InvoicesTotalFields = (props) =>{
                     finalSumWithoutVat: finalSumWithoutVat
                 //     total sum fields
             })
-        setMsg(true)
+        setShow(true)
         localStorage.setItem('wdic', date.toLocaleString('en-GB'));
         localStorage.setItem('lad', props.inputListBuyerFields[0].buyer);
         localStorage.setItem('ladin', props.inputListBuyerFields[0].invoiceNumber);
         setTimeout(() => {
-            setMsg(false)
+            setShow(false)
             window.location.reload(true);
-        }, 2000);
+        }, 2600);
     }
 
     useEffect(() => {
@@ -60,7 +60,6 @@ const InvoicesTotalFields = (props) =>{
     return (
         <Row className={'mt-1'}>
             <Col className={"text-center"}>
-                {msg && <h1 className={"text-success"}>Успешно зачувана фактура!!</h1>}
             </Col>
             <Col md={{ span: 4, offset: 8 }}>
                 <ListGroup>
@@ -85,6 +84,13 @@ const InvoicesTotalFields = (props) =>{
                     {initalLanguage ? translations.mkTranslations.saveInvoice: translations.enTranslations.saveInvoice}
                 </Button>
             </Col>
+
+            <Modal centered show={show}>
+                <Modal.Header className={"p-5"}>
+                    <Modal.Title>{initalLanguage ? translations.mkTranslations.invoiceAddedSuccessfully : translations.enTranslations.invoiceAddedSuccessfully}</Modal.Title>
+                </Modal.Header>
+                <ModalBody></ModalBody>
+            </Modal>
         </Row>
     );
 }

@@ -1,20 +1,15 @@
 #root{
     min-height: 100vh;
-    background-color: ghostwhite;
+    background-color: whitesmoke;
 }
 
-.snow,
-.home{
-    background-image: url("../public/christmas.png");
+
+.firm-image{
+    background-image: url("../public/sase.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 100vh;
-}
-
-.home{
-    background-image: url("../public/tree.webp");
-    background-position: top;
+    height: 14vh;
 }
 
 nav.navbar,
@@ -101,11 +96,6 @@ span.navbar-text{
 
 .last-file-added{
     background-color: #18202b!important;
-}
-
-
-.cards .card:hover{
-    background-color: rgba(0,0,0, .4)!important;
 }
 
 .language-selector{

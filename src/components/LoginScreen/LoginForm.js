@@ -72,8 +72,7 @@ const LoginForm = () => {
                         </Button>
                     </Form>
                     <div className={"mt-5"}>
-                        <p>{initalLanguage ? translations.mkTranslations.email : translations.enTranslations.email}:sase@live.com</p>
-                        <p>{initalLanguage ? translations.mkTranslations.password : translations.enTranslations.password}:112233</p>
+                        <p>{initalLanguage ? translations.mkTranslations.contactMe : translations.enTranslations.contactMe}: saso_mitkovski@live.com</p>
                     </div>
                 </Col>
 

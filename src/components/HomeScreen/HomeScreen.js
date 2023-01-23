@@ -35,7 +35,6 @@ const Homescreen = ({users}) => {
     }
 
     return (
-        <div className="snow">
         <Container>
             <Row className={"text-center cards pt-5"}>
                 <Col md={6}>
@@ -121,8 +120,6 @@ const Homescreen = ({users}) => {
                 </Col>
             </Row>
         </Container>
-        </div>
-
     );
 }
 

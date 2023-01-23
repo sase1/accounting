@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    initalLanguage: true,
+    initalLanguage: true
 }
-export const counterSlice = createSlice({
+export const translationSlice = createSlice({
     name: 'languageChangeHandler',
     initialState,
     reducers: {
@@ -13,6 +13,6 @@ export const counterSlice = createSlice({
     },
 })
 // Action creators are generated for each case reducer function
-export const { changeLanguage } = counterSlice.actions
+export const { changeLanguage } = translationSlice.actions
 
-export default counterSlice.reducer
+export default translationSlice.reducer
