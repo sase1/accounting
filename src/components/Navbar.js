@@ -43,7 +43,7 @@ const PageNavbar = (props) => {
             <Navbar className="d-print-none ">
                 <Container>
                     <Button className="language-selector" variant={"outline-light"} onClick={() => dispatch(changeLanguage())}>{initalLanguage ? "English" : "Македонски"}</Button>
-                    <Navbar.Brand href="">
+                    <Navbar.Brand href="https://accounting-cd846.web.app/">
                         <h2 className={"d-inline text-white"}>
                             M<span className={"text-danger"}>{initalLanguage ? translations.mkTranslations.modalLogo : translations.enTranslations.modalLogo}</span>
                         </h2>

@@ -48,11 +48,10 @@ const LoginForm = () => {
         <Container>
             <Row className={"justify-content-md-center align-items-center vh-100"}>
                 <Col md={4} className={"loginFormContainer bg-white p-5"}>
-                    <h1 className={"text-center"}>{initalLanguage ? translations.mkTranslations.internetSystem : translations.enTranslations.internetSystem}</h1>
+                    <h1 className={"text-center"}>{initalLanguage ? translations.mkTranslations.welcome : translations.enTranslations.welcome}</h1>
                     <Form noValidate validated={validated} onSubmit={logIn}>
                         <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
                             <h3 className={'text-center mt-1'}>{message}</h3>
-
                             <Form.Label>{initalLanguage ? translations.mkTranslations.email : translations.enTranslations.email}</Form.Label>
                             <Form.Control type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
@@ -70,10 +69,8 @@ const LoginForm = () => {
                         <Button className={"create-user"} type="submit">
                             {initalLanguage ? translations.mkTranslations.login : translations.enTranslations.login}
                         </Button>
+                        <p className="mt-3">{initalLanguage ? translations.mkTranslations.contactMe : translations.enTranslations.contactMe}: saso_mitkovski@live.com</p>
                     </Form>
-                    <div className={"mt-5"}>
-                        <p>{initalLanguage ? translations.mkTranslations.contactMe : translations.enTranslations.contactMe}: saso_mitkovski@live.com</p>
-                    </div>
                 </Col>
 
             </Row>

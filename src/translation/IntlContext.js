@@ -19,6 +19,7 @@ export const translations = {
         enterPassword: "Внеси лозинка",
         loginSuccesfull: "Успешна најава!",
         wrongEmailOrPassword: "Неправилен емајл или лозинка",
+        welcome: "Добредојде",
         // login page
         pageDontExist: "Не постои страната",
         getBackToSystem: "Врати се назад кон системот",
@@ -117,6 +118,7 @@ export const translations = {
         enterPassword: "Enter password",
         loginSuccesfull: "Login succesfull!",
         wrongEmailOrPassword: "Wrong email or password",
+        welcome: "Welcome",
         // login page
         pageDontExist: "Page don't exist",
         getBackToSystem: "Get back to the system",
