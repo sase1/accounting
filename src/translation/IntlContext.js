@@ -10,7 +10,7 @@ export const translations = {
         modalLogo: "Систем",
         // navbar
         login: "Логирај се",
-        internetSystem: "Интернет Систем",
+        internetSystem: "Интернет Систем за фактури",
         create: "Креирај корисник",
         email: "Имејл",
         contactMe: "Контакт за системот",
@@ -93,9 +93,8 @@ export const translations = {
         addRow: "Додај ред",
         removeRow: "Одстрани ред",
         saveInvoice: "Зачувај фактура",
-        fillTheFields: "Пополни ги полињата: Купувач, Број на ф-ра, и Датум на ф-ра за да зачуваш",
+        fillTheFields: "Пополни ги полињата: Име на Клиент, Број на ф-ра, и Датум на ф-ра за да зачуваш",
         invoiceAddedSuccessfully: "Успешно зачувана фактура!"
-
     },
 
     enTranslations: {
@@ -109,7 +108,7 @@ export const translations = {
         modalLogo: "System",
         // navbar
         login: "Log in",
-        internetSystem: "Internet System",
+        internetSystem: "Internet System for invoices",
         create: "Create user",
         email: "E-mail",
         contactMe: "Contact for the system",
@@ -192,8 +191,8 @@ export const translations = {
         addRow: "Add row",
         removeRow: "Remove row",
         saveInvoice: "Save the invoice",
-        fillTheFields: "Fill in the fields: Buyer, Invoice Number, and Invoice Date to save",
+        fillTheFields: "Fill in the fields: Client name, Invoice Number, and Invoice Date to save",
         invoiceAddedSuccessfully: "Invoice added successfully!"
-            }
+    }
 }
 

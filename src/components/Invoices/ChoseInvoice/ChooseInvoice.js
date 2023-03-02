@@ -23,6 +23,7 @@ const ChooseInvoice = ({users, setUsers}) => {
             setMonthValue(localStorage.getItem('month'))
             setYearValue(localStorage.getItem('year'))
         }
+
     }, []);
 
     const showTable = (e) => {
@@ -40,10 +41,16 @@ const ChooseInvoice = ({users, setUsers}) => {
         localStorage.removeItem('year');
     }
 
-    const removeMultipleMonthsFromSelect = Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(5, 7)]:cur}),{}))
-    const removeMultipleYearsFromSelect = Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(0, 4)]:cur}),{}))
-
+    // const removeMultipleMonthsFromSelect = Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(5, 7)]:cur}),{}))
+    // const removeMultipleYearsFromSelect = Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(0, 4)]:cur}),{}))
     // console.log(Object.values(users.reduce((acc,cur)=>Object.assign(acc,{[cur.invoiceDate.substring(0, 4)]:cur}),{})))
+
+    const uniqueArrMonths = users.filter((item, index) => users.map(i => i.invoiceDate.substring(5, 7))
+    .indexOf(item.invoiceDate.substring(5, 7)) === index).sort((a, b) => b.invoiceDate.substring(5, 7).localeCompare(a.invoiceDate.substring(5, 7)));
+
+    const uniqueArrYears = users.filter((item, index) => users.map(i => i.invoiceDate.substring(0, 4))
+    .indexOf(item.invoiceDate.substring(0, 4)) === index).sort((a, b) => b.invoiceDate.substring(0, 4).localeCompare(a.invoiceDate.substring(0, 4)));
+
     return (
         <Container fluid>
             <Row>
@@ -76,8 +83,7 @@ const ChooseInvoice = ({users, setUsers}) => {
                                 <Form.Select aria-label="Default select example" value={monthValue} onChange={ e => setMonthValue(e.target.value)}>
                                     <option value="0">{initalLanguage ? translations.mkTranslations.chooseMonth : translations.enTranslations.chooseMonth}</option>
                                     {/*<option value="01">Јануари</option>*/}
-                                    {removeMultipleMonthsFromSelect.map((user, idx) => {
-                                        // console.log(user.invoiceDate.substring(5, 7).split().sort())
+                                    {uniqueArrMonths.map((user, idx) => {
                                         return (
                                             <option key={idx} value={user.invoiceDate.substring(5, 7)}>{user.invoiceDate.substring(5, 7)}</option>
                                         );
@@ -89,7 +95,7 @@ const ChooseInvoice = ({users, setUsers}) => {
                                 <Form.Select aria-label="Default select example" value={yearValue} onChange={ e => setYearValue(e.target.value)}>
                                     <option value="0">{initalLanguage ? translations.mkTranslations.chooseYear : translations.enTranslations.chooseYear}</option>
                                     {/*<option value="2018">2018</option>*/}
-                                    {removeMultipleYearsFromSelect.map((user, idx) => {
+                                    {uniqueArrYears.map((user, idx) => {
                                         return (
                                             <option key={idx} value={user.invoiceDate.substring(0, 4)}>{user.invoiceDate.substring(0, 4)}</option>
                                         );

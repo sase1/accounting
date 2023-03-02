@@ -42,7 +42,7 @@ const InvoicesTotalFields = (props) =>{
         setTimeout(() => {
             setShow(false)
             window.location.reload(true);
-        }, 2600);
+        }, 3000);
     }
 
     useEffect(() => {
@@ -89,7 +89,10 @@ const InvoicesTotalFields = (props) =>{
                 <Modal.Header className={"p-5"}>
                     <Modal.Title>{initalLanguage ? translations.mkTranslations.invoiceAddedSuccessfully : translations.enTranslations.invoiceAddedSuccessfully}</Modal.Title>
                 </Modal.Header>
-                <ModalBody></ModalBody>
+                <ModalBody>
+                    <h6>Ime na klient: {props.inputListBuyerFields[0].buyer}</h6>
+                    <h6>Broj na faktura: {props.inputListBuyerFields[0].invoiceNumber}</h6>
+                </ModalBody>
             </Modal>
         </Row>
     );
