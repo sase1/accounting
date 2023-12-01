@@ -10,7 +10,7 @@ export const translations = {
         modalLogo: "Систем",
         // navbar
         login: "Логирај се",
-        internetSystem: "Интернет Систем за фактури",
+        internetSystem: "Онлајн Систем за фактури",
         create: "Креирај корисник",
         email: "Имејл",
         contactMe: "Контакт за системот",
@@ -109,7 +109,7 @@ export const translations = {
         modalLogo: "System",
         // navbar
         login: "Log in",
-        internetSystem: "Internet System for invoices",
+        internetSystem: "Online System for invoices",
         create: "Create user",
         email: "E-mail",
         contactMe: "Contact for the system",

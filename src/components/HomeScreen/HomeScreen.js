@@ -8,6 +8,16 @@ import {useSelector} from "react-redux";
 import {translations} from "../../translation/IntlContext";
 const Homescreen = ({users}) => {
     const {initalLanguage} = useSelector((state) => state.languageChangeHandler)
+    console.log(users)
+
+    const uniqueBuyers = new Set();
+    const filteredData = users.filter(obj => {
+    if (!uniqueBuyers.has(obj.buyer)) {
+        uniqueBuyers.add(obj.buyer);
+        return true;
+    }
+    return false;
+    });
 
     const lightBulbSwitch = () => {
         const app = document.getElementById("root");
@@ -116,6 +126,12 @@ const Homescreen = ({users}) => {
                             </tr>
                             </tbody>
                         </Table>
+                    </Card>
+                </Col>
+
+                <Col md={6} className="mb-5">
+                    <Card className="last-file-added text-white d-flex justify-content-center align-items-center">
+                       <h5>Vkupno Klienti: {filteredData.length}</h5>
                     </Card>
                 </Col>
             </Row>
